@@ -1,15 +1,34 @@
 {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 {{ 'qorix-review-reel-widget.css' | asset_url | stylesheet_tag }}
 
+<style>
+  [data-section='qorix-review-reel-widget'] {
+    --color-text-primary: #303030;
+    --color-text-product-name: #0d2440;
+    --nav-cols: 4;
+    --product-title-size: 24px;
+    --review-text-size: 24px;
+    --card-background: #ffffff;
+    --card-border-radius: 8px;
+    --gap-between-cards: 8px;
+    --active-dot-color: #1d9e75;
+    --autoplay-enabled: true;
+    --autoplay-speed: 4000;
+  }
+</style>
+
 <section data-section="qorix-review-reel-widget" class="qorix-review-reel-real-review-section">
   {% render 'section-heading' %}
   <!-- ── Swiper ── -->
   <div class="qorix-review-reel-swiper-wrapper">
     <div class="qorix-review-reel-swiper swiper mySwiper">
       <div class="swiper-wrapper">
+        
         {% render 'qorix-review-reel-widget-card',
-          video_src: 'https://www.pexels.com/download/video/7667953/',
-          product_title: 'Product: Facial Serum Vitamin C taj',
+          media_type: 'image',
+          image_src: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80',
+          image_alt: 'Facial Serum Vitamin C product',
+          product_title: 'Product: Facial Serum Vitamin C',
           review_quote: "I'm grateful for their honesty and transparency throughout the process.",
           user_avatar: 'https://i.pravatar.cc/56?img=47',
           user_name: 'Saoirse Ronan',
@@ -17,8 +36,9 @@
         %}
 
         {% render 'qorix-review-reel-widget-card',
+          media_type: 'video',
           video_src: 'https://www.pexels.com/download/video/7667953/',
-          product_title: 'Product: Facial Serum Vitamin C taj',
+          product_title: 'Product: Facial Serum Vitamin C',
           review_quote: 'I was initially hesitant about applying for a mortgage',
           user_avatar: 'https://i.pravatar.cc/56?img=32',
           user_name: 'Jennifer Lawrence',
@@ -26,16 +46,9 @@
         %}
 
         {% render 'qorix-review-reel-widget-card',
-          video_src: 'https://www.pexels.com/download/video/7667953/',
-          product_title: 'Product: Facial Serum Vitamin C Taj',
-          review_quote: 'Trust is paramount when it comes to choosing a mortgage lender',
-          user_avatar: 'https://i.pravatar.cc/56?img=51',
-          user_name: 'Bruce Wills',
-          review_date: '17th May, 2026'
-        %}
-
-        {% render 'qorix-review-reel-widget-card',
-          video_src: 'https://www.pexels.com/download/video/7667953/',
+          media_type: 'image',
+          image_src: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600&q=80',
+          image_alt: 'AHA Smoothing Cream product',
           product_title: 'Product: AHA Smoothing Cream',
           review_quote: 'The results exceeded my expectations completely',
           user_avatar: 'https://i.pravatar.cc/56?img=12',
@@ -44,12 +57,24 @@
         %}
 
         {% render 'qorix-review-reel-widget-card',
+          media_type: 'video',
           video_src: 'https://www.pexels.com/download/video/7667953/',
           product_title: 'Product: Hydrating Face Mist',
           review_quote: 'Best skincare purchase I have made this year',
           user_avatar: 'https://i.pravatar.cc/56?img=25',
           user_name: 'Ryan Reynolds',
           review_date: '25th May, 2026'
+        %}
+
+        {% render 'qorix-review-reel-widget-card',
+          media_type: 'image',
+          image_src: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&q=80',
+          image_alt: 'Skincare product review',
+          product_title: 'Product: Night Repair Serum',
+          review_quote: 'Trust is paramount when it comes to choosing the right skincare',
+          user_avatar: 'https://i.pravatar.cc/56?img=51',
+          user_name: 'Bruce Willis',
+          review_date: '17th May, 2026'
         %}
       </div>
 
@@ -83,11 +108,14 @@
 
       var wrapper = container.closest('.qorix-review-reel-real-review-section');
       var computedStyle = getComputedStyle(wrapper || container);
-      var navCols = parseInt(computedStyle.getPropertyValue('---nav-cols').trim()) || 3;
+      var navCols = parseInt(computedStyle.getPropertyValue('--nav-cols').trim()) || 3;
+      var gapBetweenCards = parseInt(computedStyle.getPropertyValue('--gap-between-cards').trim()) || 8;
+      var autoplayEnabled = computedStyle.getPropertyValue('--autoplay-enabled').trim() === 'true';
+      var autoplaySpeed = parseInt(computedStyle.getPropertyValue('--autoplay-speed').trim()) || 4000;
 
-      new Swiper('.mySwiper', {
+      var swiperOptions = {
         slidesPerView: 1,
-        spaceBetween: 16,
+        spaceBetween: gapBetweenCards,
         observer: true,
         observeParents: true,
         navigation: {
@@ -99,10 +127,19 @@
           clickable: true,
         },
         breakpoints: {
-          601: { slidesPerView: 2, spaceBetween: 20 },
-          961: { slidesPerView: navCols, spaceBetween: 24 },
+          601: { slidesPerView: 2, spaceBetween: gapBetweenCards },
+          961: { slidesPerView: navCols, spaceBetween: gapBetweenCards },
         },
-      });
+      };
+
+      if (autoplayEnabled) {
+        swiperOptions.autoplay = {
+          delay: autoplaySpeed,
+          disableOnInteraction: false,
+        };
+      }
+
+      new Swiper('.mySwiper', swiperOptions);
 
       document
         .querySelectorAll('.qorix-review-reel-review-card-image[data-media-type="video"]')

@@ -1,9 +1,8 @@
 [data-section="qorix-review-reel-widget"] {
-  ---color-text-primary: #303030;
-  ---color-text-green: #008923;
-  ---color-text-secondary: #616161;
-  ---color-text-product-name: #0d2440;
-  ---nav-cols: 3;
+  --color-text-primary: #303030;
+  --color-text-secondary: #616161;
+  --color-text-product-name: #0d2440;
+  --nav-cols: 3;
 }
 
 
@@ -89,7 +88,7 @@
 [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
-  background: #34c759;
+  background: var(--active-dot-color, #34c759);
   opacity: 0.2;
   transition: opacity 0.25s, transform 0.25s;
   border-radius: 50%;
@@ -99,7 +98,7 @@
 
 [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-pagination .swiper-pagination-bullet-active {
   opacity: 1;
-  background: #34c759;
+  background: var(--active-dot-color, #34c759);
 }
 
 [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-pagination-bullet-active {
@@ -114,9 +113,9 @@
   display: flex;
   flex-direction: column;
   padding: 16px;
-  background: #fff;
+  background: var(--card-background, #fff);
   border: 1px solid #eff2f5;
-  border-radius: 16px;
+  border-radius: var(--card-border-radius, 16px);
   gap: 20px;
   height: 100% !important;
 }
@@ -125,7 +124,7 @@
   position: relative;
   width: 100%;
   height: 272px;
-  border-radius: 8px;
+  border-radius: var(--card-border-radius, 8px);
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -185,18 +184,18 @@
 [data-section="qorix-review-reel-widget"] .qorix-review-reel-product-title {
   margin: 0;
   font-weight: 500;
-  font-size: 16px;
+  font-size: clamp(16px, calc(1.25vw + 0.375rem), var(--product-title-size, 24px));
   line-height: 1.7;
   letter-spacing: -0.5px;
-  color: var(---color-text-product-name);
+  color: var(--color-text-product-name);
 }
 
 [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-quote {
   margin: 0;
-  font-size: 24px;
+  font-size: clamp(16px, calc(1.25vw + 0.375rem), var(--review-text-size, 24px));
   line-height: 1.4;
   letter-spacing: -1px;
-  color: var(---color-text-primary);
+  color: var(--color-text-primary);
 }
 
 [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-user {
@@ -226,14 +225,14 @@
   font-size: 16px;
   line-height: 1.7;
   letter-spacing: -0.5px;
-  color: var(---color-text-primary);
+  color: var(--color-text-primary);
 }
 
 [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-date {
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
-  color: var(---color-text-secondary);
+  color: var(--color-text-secondary);
 }
 
 @media (max-width: 960px) {
@@ -244,6 +243,7 @@
 
 
 }
+
 
 @media (max-width: 600px) {
   [data-section="qorix-review-reel-widget"] .qorix-review-reel-real-review-section {
@@ -261,10 +261,6 @@
 
   [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-card-image {
     height: 220px;
-  }
-
-  [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-quote {
-    font-size: 20px;
   }
 
   [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-wrapper {
