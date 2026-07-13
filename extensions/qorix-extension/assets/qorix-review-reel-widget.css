@@ -1,8 +1,15 @@
 [data-section="qorix-review-reel-widget"] {
   --color-text-primary: #303030;
-  --color-text-secondary: #616161;
-  --color-text-product-name: #0d2440;
-  --nav-cols: 3;
+    --color-text-product-name: #0d2440;
+    --nav-cols: 3;
+    --product-title-size: 19px;
+    --review-text-size: 24px;
+    --card-background: #ffffff;
+    --card-border-radius: 8px;
+    --gap-between-cards: 24px;
+    --active-dot-color: #1d9e75;
+    --autoplay-enabled: true;
+    --autoplay-speed: 4000;
 }
 
 
