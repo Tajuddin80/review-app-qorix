@@ -1,23 +1,13 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Customer Reviews – Video Stack</title>
-  <link rel="stylesheet" href="qorix-review-video-stack-widget.css">
-</head>
-
-<body>
-  <style>
-    [data-section="qorix-review-video-stack-widget"] {
-      ---color-text-primary: #303030;
-      ---color-text-green: #008923;
-      ---color-text-secondary: #616161;
-      ---color-text-product-name: #0d2440;
-    }
-  </style>
-  <section class="qorix-review-video-stack-section" data-section="qorix-review-video-stack-widget">
+{{ 'qorix-review-video-stack-widget.css' | asset_url | stylesheet_tag }}
+<style>
+  [data-section="qorix-review-video-stack-widget"] {
+    ---color-text-primary: #303030;
+    ---color-text-green: #008923;
+    ---color-text-secondary: #616161;
+    ---color-text-product-name: #0d2440;
+  }
+</style>
+<section class="qorix-review-video-stack-section" data-section="qorix-review-video-stack-widget">
 
     <!-- ════════ HEADER ════════ -->
     <div class="qorix-review-video-stack-section-header">
@@ -426,9 +416,9 @@
       </button>
     </div><!-- /.qorix-review-video-stack-carousel -->
 
-  </section>
-
-  <script>
+</section>
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer></script>
+<script>
     const stackSlides = Array.from(document.querySelectorAll('.qorix-review-video-stack-swiper .swiper-slide'));
     const stackDots = Array.from(document.querySelectorAll('.qorix-review-video-stack-dot'));
     const stackPrev = document.querySelector('.qorix-review-video-stack-nav-prev');
@@ -524,6 +514,3 @@
       }
     });
   </script>
-</body>
-
-</html>

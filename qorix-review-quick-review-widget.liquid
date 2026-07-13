@@ -1,0 +1,762 @@
+{{ 'qorix-review-quick-review-widget.css' | asset_url | stylesheet_tag }}
+<style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  [data-section='qorix-review-quick-review-widget'] {
+    ---color-text-primary: #303030;
+    ---color-text-green: #008923;
+    ---color-text-secondary: #616161;
+    ---color-text-product-name: #0d2440;
+  }
+</style>
+
+<section data-section="qorix-review-quick-review-widget">
+  <div class="qorix-review-quick-review-frame">
+    <div class="qorix-review-quick-review-container">
+      <!-- ── Header ── -->
+      <div class="qorix-review-quick-review-header">
+        <div class="qorix-review-quick-review-header-left">
+          <div class="qorix-review-quick-review-header-title-block">
+            <div class="qorix-review-quick-review-header-title-container">
+              <div class="qorix-review-quick-review-header-title">Customer Reviews</div>
+            </div>
+            <div class="qorix-review-quick-review-rating-row">
+              <div class="qorix-review-quick-review-rating-num-container">
+                <span class="qorix-review-quick-review-rating-num">4.9</span>
+              </div>
+              <span class="qorix-review-quick-review-rating-meta">24 reviews</span>
+            </div>
+          </div>
+          <button class="qorix-review-quick-review-btn-green">
+            <span class="qorix-review-quick-review-btn-text">Write a review</span>
+          </button>
+        </div>
+
+        <div class="qorix-review-quick-review-header-right">
+          <button
+            class="qorix-review-quick-review-icon-pill"
+            title="Sort"
+            id="qorix-review-quick-review-sort-btn"
+          >
+            <div class="qorix-review-quick-review-icon-sort">
+              <div class="qorix-review-quick-review-vector-sort-1"></div>
+              <div class="qorix-review-quick-review-vector-sort-3"></div>
+              <div class="qorix-review-quick-review-vector-sort-2"></div>
+            </div>
+          </button>
+          <button class="qorix-review-quick-review-icon-pill" title="Filter">
+            <svg
+              class="qorix-review-quick-review-icon-filter"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M3 5h18l-7 8v6l-4-2v-4z" stroke="#4A4A4A" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div class="qorix-review-quick-review-menu hidden" id="qorix-review-quick-review-sort-menu">
+            <button class="qorix-review-quick-review-menu-item active" data-sort="highest">
+              <div class="qorix-review-quick-review-menu-item-blank"></div>
+              <span class="qorix-review-quick-review-menu-item-text">Highest rating</span>
+            </button>
+            <button class="qorix-review-quick-review-menu-item" data-sort="lowest">
+              <div class="qorix-review-quick-review-menu-item-blank"></div>
+              <span class="qorix-review-quick-review-menu-item-text">Lowest rating</span>
+            </button>
+            <button class="qorix-review-quick-review-menu-item" data-sort="only-pictures">
+              <div class="qorix-review-quick-review-menu-item-blank"></div>
+              <span class="qorix-review-quick-review-menu-item-text">Only pictures</span>
+            </button>
+            <button class="qorix-review-quick-review-menu-item" data-sort="pictures-first">
+              <div class="qorix-review-quick-review-menu-item-blank"></div>
+              <span class="qorix-review-quick-review-menu-item-text">Pictures first</span>
+            </button>
+            <button class="qorix-review-quick-review-menu-item" data-sort="videos-first">
+              <div class="qorix-review-quick-review-menu-item-blank"></div>
+              <span class="qorix-review-quick-review-menu-item-text">Videos first</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Content area ── -->
+      <div class="qorix-review-quick-review-content-area">
+        <div class="qorix-review-quick-review-filters">
+          <div class="qorix-review-quick-review-filters-title">Filters</div>
+          <div class="qorix-review-quick-review-rating-filter-container">
+            <div class="qorix-review-quick-review-rating-label">Rating</div>
+            <div class="qorix-review-quick-review-filter-pills">
+              <button
+                class="qorix-review-quick-review-pill qorix-review-quick-review-pill-all"
+                data-filter="All"
+              >
+                All
+              </button>
+              <button
+                class="qorix-review-quick-review-pill qorix-review-quick-review-pill-1"
+                data-filter="1"
+              >
+                1
+                <div class="qorix-review-quick-review-star-filled">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                        d="M13.3536 4.94761C12.81 3.80761 11.19 3.80761 10.6464 4.94761L8.97842 8.44201L5.13962 8.94721C3.88922 9.11281 3.38762 10.6536 4.30322 11.5224L7.11122 14.1888L6.40682 17.9952C6.17642 19.236 7.48802 20.1888 8.59682 19.5876L12 17.7396L15.4032 19.5876C16.512 20.1888 17.8236 19.236 17.5932 17.9952L16.8888 14.1888L19.6968 11.5224C20.6112 10.6536 20.1108 9.11281 18.8604 8.94721L15.0204 8.44201L13.3536 4.94761Z"
+                        fill="#FF9500" />
+                  </svg>
+                </div>
+              </button>
+              <button
+                class="qorix-review-quick-review-pill qorix-review-quick-review-pill-2"
+                data-filter="2"
+              >
+                2
+                <div class="qorix-review-quick-review-star-filled">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                        d="M13.3536 4.94761C12.81 3.80761 11.19 3.80761 10.6464 4.94761L8.97842 8.44201L5.13962 8.94721C3.88922 9.11281 3.38762 10.6536 4.30322 11.5224L7.11122 14.1888L6.40682 17.9952C6.17642 19.236 7.48802 20.1888 8.59682 19.5876L12 17.7396L15.4032 19.5876C16.512 20.1888 17.8236 19.236 17.5932 17.9952L16.8888 14.1888L19.6968 11.5224C20.6112 10.6536 20.1108 9.11281 18.8604 8.94721L15.0204 8.44201L13.3536 4.94761Z"
+                        fill="#FF9500" />
+                  </svg>
+                </div>
+              </button>
+              <button
+                class="qorix-review-quick-review-pill qorix-review-quick-review-pill-3"
+                data-filter="3"
+              >
+                3
+                <div class="qorix-review-quick-review-star-filled">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                        d="M13.3536 4.94761C12.81 3.80761 11.19 3.80761 10.6464 4.94761L8.97842 8.44201L5.13962 8.94721C3.88922 9.11281 3.38762 10.6536 4.30322 11.5224L7.11122 14.1888L6.40682 17.9952C6.17642 19.236 7.48802 20.1888 8.59682 19.5876L12 17.7396L15.4032 19.5876C16.512 20.1888 17.8236 19.236 17.5932 17.9952L16.8888 14.1888L19.6968 11.5224C20.6112 10.6536 20.1108 9.11281 18.8604 8.94721L15.0204 8.44201L13.3536 4.94761Z"
+                        fill="#FF9500" />
+                  </svg>
+                </div>
+              </button>
+              <button
+                class="qorix-review-quick-review-pill qorix-review-quick-review-pill-4"
+                data-filter="4"
+              >
+                4
+                <div class="qorix-review-quick-review-star-filled">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                        d="M13.3536 4.94761C12.81 3.80761 11.19 3.80761 10.6464 4.94761L8.97842 8.44201L5.13962 8.94721C3.88922 9.11281 3.38762 10.6536 4.30322 11.5224L7.11122 14.1888L6.40682 17.9952C6.17642 19.236 7.48802 20.1888 8.59682 19.5876L12 17.7396L15.4032 19.5876C16.512 20.1888 17.8236 19.236 17.5932 17.9952L16.8888 14.1888L19.6968 11.5224C20.6112 10.6536 20.1108 9.11281 18.8604 8.94721L15.0204 8.44201L13.3536 4.94761Z"
+                        fill="#FF9500" />
+                  </svg>
+                </div>
+              </button>
+              <button
+                class="qorix-review-quick-review-pill qorix-review-quick-review-pill-5"
+                data-filter="5"
+              >
+                5
+                <div class="qorix-review-quick-review-star-filled">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                        d="M13.3536 4.94761C12.81 3.80761 11.19 3.80761 10.6464 4.94761L8.97842 8.44201L5.13962 8.94721C3.88922 9.11281 3.38762 10.6536 4.30322 11.5224L7.11122 14.1888L6.40682 17.9952C6.17642 19.236 7.48802 20.1888 8.59682 19.5876L12 17.7396L15.4032 19.5876C16.512 20.1888 17.8236 19.236 17.5932 17.9952L16.8888 14.1888L19.6968 11.5224C20.6112 10.6536 20.1108 9.11281 18.8604 8.94721L15.0204 8.44201L13.3536 4.94761Z"
+                        fill="#FF9500" />
+                  </svg>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Reviews ── -->
+      <div class="qorix-review-quick-review-reviews">
+        <div class="qorix-review-quick-review-line-9"></div>
+        <div class="qorix-review-quick-review-reviews-list">
+          <!-- Dynamic reviews rendered by JS -->
+        </div>
+      </div>
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /frame -->
+
+  <!-- Modal overlay -->
+  <div class="qorix-review-quick-review-modal-overlay hidden" id="qorix-review-quick-review-modal-overlay"></div>
+
+  <!-- Review form modal -->
+  <aside class="qorix-review-quick-review-form-card hidden">
+    <div class="qorix-review-quick-review-form-header">
+      <div class="qorix-review-quick-review-form-title-designation">
+        <div class="qorix-review-quick-review-form-avatar">
+          <div class="qorix-review-quick-review-form-avatar-icon-container">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#FFFFFF"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4z" />
+            </svg>
+          </div>
+        </div>
+        <div class="qorix-review-quick-review-form-title-text-block">
+          <div class="qorix-review-quick-review-form-title-row">
+            <div class="qorix-review-quick-review-form-title-text">How was your experience?</div>
+          </div>
+          <div class="qorix-review-quick-review-form-subtitle-text">Your feedback helps others</div>
+        </div>
+      </div>
+      <div class="qorix-review-quick-review-form-close-btn-container">
+        <button class="qorix-review-quick-review-form-close-btn" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round">
+            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="qorix-review-quick-review-form-rating-field">
+      <div class="qorix-review-quick-review-form-rating-label">Your rating *</div>
+      <div class="qorix-review-quick-review-form-rating-stars-row">
+        <div class="qorix-review-quick-review-form-star-item">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+                d="M12 2L14.85 8.4L21.85 9.1L16.6 13.9L18.1 20.8L12 17.2L5.9 20.8L7.4 13.9L2.15 9.1L9.15 8.4L12 2Z" />
+          </svg>
+        </div>
+        <div class="qorix-review-quick-review-form-star-item">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+                d="M12 2L14.85 8.4L21.85 9.1L16.6 13.9L18.1 20.8L12 17.2L5.9 20.8L7.4 13.9L2.15 9.1L9.15 8.4L12 2Z" />
+          </svg>
+        </div>
+        <div class="qorix-review-quick-review-form-star-item">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+                d="M12 2L14.85 8.4L21.85 9.1L16.6 13.9L18.1 20.8L12 17.2L5.9 20.8L7.4 13.9L2.15 9.1L9.15 8.4L12 2Z" />
+          </svg>
+        </div>
+        <div class="qorix-review-quick-review-form-star-item">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+                d="M12 2L14.85 8.4L21.85 9.1L16.6 13.9L18.1 20.8L12 17.2L5.9 20.8L7.4 13.9L2.15 9.1L9.15 8.4L12 2Z" />
+          </svg>
+        </div>
+        <div class="qorix-review-quick-review-form-star-item">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+                d="M12 2L14.85 8.4L21.85 9.1L16.6 13.9L18.1 20.8L12 17.2L5.9 20.8L7.4 13.9L2.15 9.1L9.15 8.4L12 2Z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="qorix-review-quick-review-form-review-field">
+      <div class="qorix-review-quick-review-form-review-label">Your review *</div>
+      <div class="qorix-review-quick-review-form-textarea-container">
+        <textarea
+          class="qorix-review-quick-review-form-textarea"
+          placeholder="Tell us what you loved or didn't like..."
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="qorix-review-quick-review-form-name-email-row">
+      <div class="qorix-review-quick-review-form-name-field">
+        <div class="qorix-review-quick-review-form-name-label">Your name *</div>
+        <div class="qorix-review-quick-review-form-input-container">
+          <input class="qorix-review-quick-review-form-input" type="text" placeholder="Enter your name">
+        </div>
+      </div>
+      <div class="qorix-review-quick-review-form-email-field">
+        <div class="qorix-review-quick-review-form-email-label">Email (Optional)</div>
+        <div class="qorix-review-quick-review-form-input-container">
+          <input
+            class="qorix-review-quick-review-form-input"
+            type="email"
+            placeholder="Enter your email"
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="qorix-review-quick-review-form-media-field">
+      <div class="qorix-review-quick-review-form-media-inner-container">
+        <div class="qorix-review-quick-review-form-media-label">Add media (optional)</div>
+        <div class="qorix-review-quick-review-form-upload-row">
+          <div class="qorix-review-quick-review-form-upload-main">
+            <div class="qorix-review-quick-review-form-upload-main-inner">
+              <div class="qorix-review-quick-review-form-upload-icon-container">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#303030"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 16V4" />
+                  <path d="M6 10l6-6 6 6" />
+                  <path d="M4 20h16" />
+                </svg>
+              </div>
+              <div class="qorix-review-quick-review-form-upload-text-block">
+                <div class="qorix-review-quick-review-form-upload-title-text">Click to upload or drag and drop</div>
+                <div class="qorix-review-quick-review-form-upload-sub-text">JPG, PNG, MP4, MOV up to 20MB each</div>
+              </div>
+            </div>
+          </div>
+          <div class="qorix-review-quick-review-form-upload-more">
+            <div class="qorix-review-quick-review-form-upload-more-inner">
+              <div class="qorix-review-quick-review-form-upload-more-icon-container">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#303030"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </div>
+              <div class="qorix-review-quick-review-form-upload-more-text">Add more</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="qorix-review-quick-review-form-submit-btn">
+      <span class="qorix-review-quick-review-form-submit-btn-text">Submit review</span>
+    </button>
+
+    <div class="qorix-review-quick-review-form-footer">
+      <div class="qorix-review-quick-review-form-footer-lock-block">
+        <div class="qorix-review-quick-review-form-footer-lock-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#616161"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="4.5" y="10.5" width="15" height="11" rx="2" />
+            <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
+          </svg>
+        </div>
+        <div class="qorix-review-quick-review-form-footer-lock-text">No account required</div>
+      </div>
+      <div class="qorix-review-quick-review-form-footer-bullet">·</div>
+      <div class="qorix-review-quick-review-form-footer-public-text">Your review is public</div>
+    </div>
+  </aside>
+</section>
+
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer></script>
+<script>
+  window.qorixReviewQuickReviewWidget = [
+    {
+      id: 1,
+      rating: 4,
+      userName: 'Rahat Hasan',
+      userAvatar: null,
+      date: '12/01/26',
+      productName: 'Hydrating Eye Cream',
+      body: 'Good results, noticed a difference in about a week. Fast shipping too.',
+      media: [
+        {
+          type: 'image',
+          url: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=300&h=300&q=80',
+        },
+        {
+          type: 'image',
+          url: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=300&h=300&q=80',
+        },
+        {
+          type: 'image',
+          url: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=300&h=300&q=80',
+        },
+      ],
+    },
+    {
+      id: 2,
+      rating: 5,
+      userName: 'Alen Harsh',
+      userAvatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=60&h=60&q=80',
+      date: '12/01/26',
+      productName: 'Hydrating Eye Cream',
+      body: 'Amazing hydration, my eyes look so much brighter and less puffy. Will buy again!',
+      media: [
+        {
+          type: 'image',
+          url: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=300&h=300&q=80',
+        },
+        {
+          type: 'image',
+          url: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=300&h=300&q=80',
+        },
+        {
+          type: 'image',
+          url: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=300&h=300&q=80',
+        },
+      ],
+    },
+    {
+      id: 3,
+      rating: 5,
+      userName: 'Alen Harsh',
+      userAvatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=60&h=60&q=80',
+      date: '12/01/26',
+      productName: 'Hydrating Eye Cream',
+      body: 'Good results, noticed a difference in about a week. Fast shipping too.',
+      media: [
+        {
+          type: 'image',
+          url: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=300&h=300&q=80',
+        },
+        {
+          type: 'image',
+          url: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=300&h=300&q=80',
+        },
+        {
+          type: 'image',
+          url: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=300&h=300&q=80',
+        },
+      ],
+    },
+    {
+      id: 4,
+      rating: 3,
+      userName: 'Sara Croft',
+      userAvatar: null,
+      date: '10/01/26',
+      productName: 'Hydrating Eye Cream',
+      body: "It's decent but a bit greasy for my oily skin. Nice packaging though.",
+      media: [],
+    },
+    {
+      id: 5,
+      rating: 5,
+      userName: 'Alex Mercer',
+      userAvatar: null,
+      date: '05/01/26',
+      productName: 'Hydrating Eye Cream',
+      body: "Best eye cream I've ever used. Here is a quick video showcasing the texture!",
+      media: [
+        {
+          type: 'video',
+          url: 'https://assets.mixkit.co/videos/preview/mixkit-skin-cream-being-applied-41882-large.mp4',
+        },
+      ],
+    },
+  ];
+  document.addEventListener('DOMContentLoaded', () => {
+    const writeReviewBtn = document.querySelector('.qorix-review-quick-review-btn-green');
+    const formCard = document.querySelector('.qorix-review-quick-review-form-card');
+    const closeFormBtn = document.querySelector('.qorix-review-quick-review-form-close-btn');
+    const modalOverlay = document.getElementById('qorix-review-quick-review-modal-overlay');
+    const filterPills = document.querySelectorAll('.qorix-review-quick-review-pill');
+    const modalStars = document.querySelectorAll('.qorix-review-quick-review-form-star-item');
+    const submitBtn = document.querySelector('.qorix-review-quick-review-form-submit-btn');
+    const sortBtn = document.getElementById('qorix-review-quick-review-sort-btn');
+    const sortMenu = document.getElementById('qorix-review-quick-review-sort-menu');
+    const menuItems = document.querySelectorAll('.qorix-review-quick-review-menu-item');
+
+    let selectedRating = 0;
+    let currentFilter = sessionStorage.getItem('qr_filter') || 'All';
+    const allowedSorts = ['highest', 'lowest', 'pictures-first', 'videos-first', 'only-pictures'];
+    let currentSort = sessionStorage.getItem('qr_sort') || 'highest';
+    if (!allowedSorts.includes(currentSort)) {
+      currentSort = 'highest';
+      sessionStorage.setItem('qr_sort', currentSort);
+    }
+
+    const reviewsData = window.qorixReviewQuickReviewWidget || [];
+
+    function escapeHtml(text) {
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+      return text.replace(/[&<>"']/g, (m) => map[m]);
+    }
+
+    function renderReviews() {
+      const listContainer = document.querySelector('.qorix-review-quick-review-reviews-list');
+      listContainer.innerHTML = '';
+
+      const totalReviews = reviewsData.length;
+      const totalRating = reviewsData.reduce((s, r) => s + r.rating, 0);
+      const averageRating = totalReviews > 0 ? (totalRating / totalReviews).toFixed(1) : '0.0';
+      document.querySelector('.qorix-review-quick-review-rating-num').textContent = averageRating;
+      document.querySelector('.qorix-review-quick-review-rating-meta').textContent = `${totalReviews} ${
+        totalReviews === 1 ? 'review' : 'reviews'
+      }`;
+
+      let processed = [...reviewsData];
+      if (currentFilter !== 'All') processed = processed.filter((r) => r.rating === parseInt(currentFilter));
+      if (currentSort === 'only-pictures') processed = processed.filter((r) => r.media && r.media.length > 0);
+
+      processed.sort((a, b) => {
+        if (currentSort === 'highest') return b.rating - a.rating;
+        if (currentSort === 'lowest') return a.rating - b.rating;
+        if (currentSort === 'pictures-first')
+          return (
+            (b.media?.some((m) => m.type === 'image') ? 1 : 0) - (a.media?.some((m) => m.type === 'image') ? 1 : 0)
+          );
+        if (currentSort === 'videos-first')
+          return (
+            (b.media?.some((m) => m.type === 'video') ? 1 : 0) - (a.media?.some((m) => m.type === 'video') ? 1 : 0)
+          );
+        return 0;
+      });
+
+      if (processed.length === 0) {
+        listContainer.innerHTML =
+          '<div class="qorix-review-quick-review-no-reviews">No reviews found matching the filters.</div>';
+        return;
+      }
+
+      processed.forEach((review, index) => {
+        const reviewItem = document.createElement('div');
+        reviewItem.className = 'qorix-review-quick-review-review-item';
+        reviewItem.setAttribute('data-rating', review.rating);
+
+        let starsHtml = '';
+        for (let i = 1; i <= 5; i++) {
+          const fill = i <= review.rating ? '#FF9500' : '#B5B5B5';
+          starsHtml += `<div class="qorix-review-quick-review-review-star-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13.3536 4.94761C12.81 3.80761 11.19 3.80761 10.6464 4.94761L8.97842 8.44201L5.13962 8.94721C3.88922 9.11281 3.38762 10.6536 4.30322 11.5224L7.11122 14.1888L6.40682 17.9952C6.17642 19.236 7.48802 20.1888 8.59682 19.5876L12 17.7396L15.4032 19.5876C16.512 20.1888 17.8236 19.236 17.5932 17.9952L16.8888 14.1888L19.6968 11.5224C20.6112 10.6536 20.1108 9.11281 18.8604 8.94721L15.0204 8.44201L13.3536 4.94761Z" fill="${fill}"/></svg></div>`;
+        }
+
+        const avatarHtml = review.userAvatar
+          ? `<div class="qorix-review-quick-review-review-avatar" style="background-image:url('${review.userAvatar}');background-size:cover;background-position:center;"></div>`
+          : `<div class="qorix-review-quick-review-review-avatar"><div class="qorix-review-quick-review-user-placeholder-icon"><div class="qorix-review-quick-review-user-placeholder-vector-1"></div><div class="qorix-review-quick-review-user-placeholder-vector-2"></div></div></div>`;
+
+        let mediaHtml = '';
+        if (review.media && review.media.length > 0) {
+          mediaHtml = '<div class="qorix-review-quick-review-review-media-row">';
+          review.media.forEach((m) => {
+            if (m.type === 'video') {
+              mediaHtml += `<div class="qorix-review-quick-review-review-thumb-video"><video src="${m.url}" muted playsinline loop></video><div class="qorix-review-quick-review-video-play-overlay"><svg viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg></div></div>`;
+            } else {
+              mediaHtml += `<div class="qorix-review-quick-review-review-thumb" style="background-image:url('${m.url}');"></div>`;
+            }
+          });
+          mediaHtml += '</div>';
+        }
+
+        reviewItem.innerHTML = `
+            <div class="qorix-review-quick-review-review-stars-user-block">
+              <div class="qorix-review-quick-review-review-stars-row">${starsHtml}</div>
+              <div class="qorix-review-quick-review-review-user-row">
+                <div class="qorix-review-quick-review-review-user-meta-block">
+                  ${avatarHtml}
+                  <div class="qorix-review-quick-review-review-user-text-block">
+                    <div class="qorix-review-quick-review-review-user-name">${escapeHtml(review.userName)}</div>
+                    <div class="qorix-review-quick-review-review-user-date">${review.date}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="qorix-review-quick-review-review-text-block">
+              <div class="qorix-review-quick-review-review-product-name">${escapeHtml(review.productName)}</div>
+              <div class="qorix-review-quick-review-review-body-text">${escapeHtml(review.body)}</div>
+            </div>
+            ${mediaHtml}
+          `;
+        listContainer.appendChild(reviewItem);
+
+        if (index < processed.length - 1) {
+          const div = document.createElement('div');
+          div.className = 'qorix-review-quick-review-review-divider';
+          listContainer.appendChild(div);
+        }
+      });
+
+      // Video controls
+      document.querySelectorAll('.qorix-review-quick-review-review-thumb-video').forEach((wrapper) => {
+        const video = wrapper.querySelector('video');
+        const overlay = wrapper.querySelector('.qorix-review-quick-review-video-play-overlay');
+        wrapper.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (video.paused) {
+            video.play();
+            overlay.classList.add('hidden');
+          } else {
+            video.pause();
+            overlay.classList.remove('hidden');
+          }
+        });
+      });
+    }
+
+    // Modal
+    const openModal = () => {
+      formCard.classList.remove('hidden');
+      modalOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    };
+    const closeModal = () => {
+      formCard.classList.add('hidden');
+      modalOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    };
+    writeReviewBtn.addEventListener('click', openModal);
+    closeFormBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+
+    // Restore active filter pill
+    filterPills.forEach((pill) => {
+      if (pill.getAttribute('data-filter') === currentFilter) {
+        filterPills.forEach((p) => p.classList.remove('active'));
+        pill.classList.add('active');
+      }
+      pill.addEventListener('click', () => {
+        filterPills.forEach((p) => p.classList.remove('active'));
+        pill.classList.add('active');
+        currentFilter = pill.getAttribute('data-filter');
+        sessionStorage.setItem('qr_filter', currentFilter);
+        renderReviews();
+      });
+    });
+
+    // Star hover/select
+    modalStars.forEach((star, index) => {
+      star.addEventListener('mouseover', () => highlightStars(index + 1));
+      star.addEventListener('mouseout', () => highlightStars(selectedRating));
+      star.addEventListener('click', () => {
+        selectedRating = index + 1;
+        highlightStars(selectedRating);
+      });
+    });
+    function highlightStars(rating) {
+      modalStars.forEach((star, i) => star.classList.toggle('selected', i < rating));
+    }
+
+    // Sort menu
+    menuItems.forEach((item) => {
+      if (item.getAttribute('data-sort') === currentSort) {
+        menuItems.forEach((i) => i.classList.remove('active'));
+        item.classList.add('active');
+      }
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuItems.forEach((i) => i.classList.remove('active'));
+        item.classList.add('active');
+        sortMenu.classList.add('hidden');
+        currentSort = item.getAttribute('data-sort');
+        sessionStorage.setItem('qr_sort', currentSort);
+        renderReviews();
+      });
+    });
+    sortBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sortMenu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', (e) => {
+      if (!sortMenu.classList.contains('hidden') && !sortMenu.contains(e.target) && !sortBtn.contains(e.target))
+        sortMenu.classList.add('hidden');
+    });
+
+    // Submit
+    submitBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const reviewText = document.querySelector('.qorix-review-quick-review-form-textarea').value.trim();
+      const nameInput = document.querySelector('.qorix-review-quick-review-form-input[placeholder="Enter your name"]');
+      const name = nameInput.value.trim();
+
+      if (selectedRating === 0) {
+        alert('Please select a rating star.');
+        return;
+      }
+      if (reviewText === '') {
+        alert('Please enter your review text.');
+        return;
+      }
+      if (name === '') {
+        alert('Please enter your name.');
+        return;
+      }
+
+      const emailInput = document.querySelector(
+        '.qorix-review-quick-review-form-input[placeholder="Enter your email"]'
+      );
+      const newReview = {
+        id: reviewsData.length + 1,
+        rating: selectedRating,
+        userName: name,
+        userAvatar: null,
+        date: new Date().toLocaleDateString('en-US'),
+        productName: 'Hydrating Eye Cream',
+        body: reviewText,
+        media: [],
+      };
+
+      submitBtn.disabled = true;
+      const submitText = document.querySelector('.qorix-review-quick-review-form-submit-btn-text');
+      const origText = submitText.textContent;
+      submitText.textContent = 'Submitting…';
+
+      setTimeout(() => {
+        reviewsData.unshift(newReview);
+        document.querySelector('.qorix-review-quick-review-form-textarea').value = '';
+        nameInput.value = '';
+        emailInput.value = '';
+        selectedRating = 0;
+        highlightStars(0);
+        renderReviews();
+        closeModal();
+        submitBtn.disabled = false;
+        submitText.textContent = origText;
+        alert('Thank you! Your review has been submitted successfully.');
+      }, 600);
+    });
+
+    renderReviews();
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "quick-review",
+  "target": "section",
+  "settings": [
+    { "type": "product", "id": "product", "label": "product", "autofill": true },
+    { "type": "color", "id": "colour", "label": "Star Colour", "default": "#ff0000" }
+  ]
+}
+{% endschema %}
+

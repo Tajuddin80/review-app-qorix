@@ -1,651 +1,143 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Customer Reviews</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="qorix-review-reel-widget.css" />
-</head>
-
-<body>
-  <style>
-    [data-section="qorix-review-reel-widget"] {
-      ---color-text-primary: #303030;
-      ---color-text-green: #008923;
-      ---color-text-secondary: #616161;
-      ---color-text-product-name: #0d2440;
-    }
-
-    section.qorix-review-reel-real-review-section {
-      margin-top: 80px;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-real-review-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 50px;
-      padding: 80px 40px;
-      max-width: 1405px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    /* ─── Header block ────────────────────────────────────────── */
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-section-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-title-group {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-subtitle {
-      margin: 0;
-      font-size: 1rem;
-      line-height: 19px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(---color-text-green);
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-heading {
-      margin: 0;
-
-      font-weight: 600;
-      font-size: 32px;
-      line-height: 1.22;
-      color: var(---color-primary);
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-description {
-      margin: 0;
-      font-size: 1rem;
-      line-height: 19px;
-      color: var(---color-primary);
-    }
-
-    /* ─── Rating bar ──────────────────────────────────────────── */
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-rating-bar {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-stars-group {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-reviews-stars {
-      display: inline-flex;
-      gap: 4px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-rating-score {
-      font-weight: 500;
-      font-size: 20px;
-      line-height: 1;
-      color: var(---color-primary);
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-count {
-      font-size: 1rem;
-      line-height: 1.25;
-      color: var(---color-text-secondary);
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-divider {
-      width: 1px;
-      height: 20px;
-      border-left: 1.5px solid rgba(48, 48, 48, 0.3);
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-verified-group {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-verified-label {
-      font-size: 1rem;
-      line-height: 1.25;
-      color: var(---color-text-secondary);
-    }
-
-    /* ─── Swiper container ────────────────────────────────────── */
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-wrapper {
-      width: 90%;
-      margin: 50px auto;
-      position: relative;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper {
-      width: 100%;
-      padding-bottom: 48px !important;
-      /* space for pagination */
-    }
-
-    /* nav arrows */
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-button-next,
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-button-prev {
-      position: absolute;
-      cursor: pointer;
-      z-index: 10;
-      width: 44px;
-      height: 44px;
-      background: #fff;
-      border-radius: 99px;
-      box-shadow:
-        inset 0px -1px 0px #b5b5b5,
-        inset 0px 0px 0px 1px rgba(0, 0, 0, 0.1),
-        inset 0px 0.5px 0px 1.5px #fff;
-      top: 38%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition:
-        box-shadow 0.15s,
-        opacity 0.2s;
-    }
-
-    /* hide Swiper's default ::after arrow text */
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-button-next::after,
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-button-prev::after {
-      display: none;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-button-next:hover,
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-button-prev:hover {
-      box-shadow:
-        inset 0px -1px 0px #999,
-        inset 0px 0px 0px 1px rgba(0, 0, 0, 0.18),
-        inset 0px 0.5px 0px 1.5px #fff;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-button-next {
-      right: 5px;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-button-prev {
-      left: 5px;
-    }
-
-    /* pagination dots */
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-pagination {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    /* Individual bullets */
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-pagination .swiper-pagination-bullet {
-      width: 8px;
-      height: 8px;
-      background: #c8c8c8;
-      opacity: 1;
-      transition: background 0.25s, transform 0.25s, width 0.25s;
-      border-radius: 99px;
-      display: inline-block;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-pagination .swiper-pagination-bullet-active {
-      background: #34c759;
-      width: 24px;
-      transform: none;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-pagination-bullet-active {
-      opacity: 1;
-    }
-
-    /* ─── Card ────────────────────────────────────────────────── */
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-card {
-      display: flex;
-      flex-direction: column;
-      padding: 16px;
-      background: #fff;
-      border: 1px solid #eff2f5;
-      border-radius: 16px;
-      gap: 20px;
-      height: auto !important;
-    }
-
-    /* image area */
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-card-image {
-      position: relative;
-      width: 100%;
-      height: 272px;
-      border-radius: 8px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-play-btn {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
-      border: none;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.9);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      transition:
-        transform 0.15s,
-        background 0.15s;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-play-btn:hover {
-      background: #fff;
-      transform: translate(-50%, -50%) scale(1.08);
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-card-image[data-media-type="image"] .qorix-review-reel-play-btn {
-      display: none;
-    }
-
-    /* card content */
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-card-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: left;
-      gap: 40px;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-text {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-product-title {
-      margin: 0;
-      font-weight: 500;
-      font-size: 1rem;
-      line-height: 1.7;
-      letter-spacing: -0.5px;
-      color: var(---color-text-product-name);
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-quote {
-      margin: 0;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 1.4;
-      letter-spacing: -1px;
-      color: var(---color-text-primary);
-    }
-
-    /* reviewer */
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-user {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-user-avatar {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-      background: #eff2f5;
-      /* fallback colour while image loads */
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-user-info {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-user-name {
-      margin: 0;
-
-      font-weight: 500;
-      font-size: 1rem;
-      line-height: 1.7;
-      letter-spacing: -0.5px;
-      color: var(---color-text-primary);
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-date {
-      margin: 0;
-
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(---color-text-secondary);
-    }
-
-    /* ─── Responsive breakpoints ──────────────────────────────── */
-
-    /* Tablet: 2 slides */
-    @media (max-width: 960px) {
-      [data-section="qorix-review-reel-widget"] .qorix-review-reel-real-review-section {
-        padding: 60px 24px;
-        gap: 40px;
-      }
-
-      [data-section="qorix-review-reel-widget"] .qorix-review-reel-heading {
-        font-size: 28px;
-      }
-
-      [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-button-next {
-        right: -6px;
-      }
-
-      [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-button-prev {
-        left: -6px;
-      }
-    }
-
-    /* Mobile: 1 slide */
-    @media (max-width: 600px) {
-      [data-section="qorix-review-reel-widget"] .qorix-review-reel-real-review-section {
-        padding: 48px 16px;
-        gap: 32px;
-      }
-
-      [data-section="qorix-review-reel-widget"] .qorix-review-reel-heading {
-        font-size: 24px;
-      }
-
-      [data-section="qorix-review-reel-widget"] .qorix-review-reel-rating-bar {
-        gap: 10px;
-      }
-
-      [data-section="qorix-review-reel-widget"] .qorix-review-reel-divider {
-        display: none;
-      }
-
-      [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-card-image {
-        height: 220px;
-      }
-
-      [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-quote {
-        font-size: 20px;
-      }
-
-      /* hide arrows on very small screens */
-      [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-button-next,
-      [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-button-prev {
-        display: none;
-      }
-    }
-
-    [data-section="qorix-review-reel-widget"] [data-swiper-controller] svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    [data-section="qorix-review-reel-widget"] .qorix-review-reel-line-clamp {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-  </style>
-  <section data-section="qorix-review-reel-widget" class="qorix-review-reel-real-review-section">
-    <!-- ── Swiper ── -->
-    <div class="qorix-review-reel-swiper-wrapper">
-      <div class="qorix-review-reel-swiper swiper mySwiper">
-        <div class="swiper-wrapper">
-          <!-- Card 1 -->
-          <div class="qorix-review-reel-swiper-slide swiper-slide">
-            <div class="qorix-review-reel-review-card">
-              <div class="qorix-review-reel-review-card-image" data-media-type="image">
-                <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80"
-                  alt="Facial Serum Vitamin C product" />
-                <button class="qorix-review-reel-play-btn" aria-label="Play video review">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_6264_4083)">
-                      <path
-                        d="M20 0C8.97167 0 0 8.97167 0 20C0 31.0283 8.97167 40 20 40C31.0283 40 40 31.0283 40 20C40 8.97167 31.0283 0 20 0ZM27.34 23.1217L18.6533 27.8783C18.1117 28.1833 17.515 28.335 16.9183 28.335C16.2967 28.335 15.6733 28.17 15.1067 27.84C13.995 27.19 13.3333 26.035 13.3333 24.7483V15.25C13.3333 13.9633 13.995 12.8083 15.1067 12.1583C16.215 11.51 17.5483 11.4983 18.67 12.13L27.3233 16.8683C28.4833 17.52 29.165 18.6867 29.165 19.9983C29.165 21.31 28.4833 22.4767 27.3383 23.12L27.34 23.1217ZM25.8333 20C25.8333 20.145 25.7367 20.1983 25.7233 20.2083L17.0367 24.9667C17.005 24.9833 16.9083 25.0367 16.7917 24.965C16.6683 24.8933 16.6683 24.7867 16.6683 24.7517V15.2533C16.6683 15.2183 16.6683 15.1117 16.7917 15.04C16.8367 15.0133 16.8783 15.005 16.915 15.005C16.975 15.005 17.0233 15.0317 17.0533 15.0483L25.7067 19.7883C25.7383 19.8067 25.8333 19.86 25.8333 20.005V20Z"
-                        fill="white" />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_6264_4083">
-                        <rect width="40" height="40" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-
-                </button>
-              </div>
-              <div class="qorix-review-reel-review-card-content">
-                <div class="qorix-review-reel-review-text">
-                  <p class="qorix-review-reel-product-title">Product: Facial Serum Vitamin C</p>
-                  <h3 class="qorix-review-reel-review-quote qorix-review-reel-line-clamp">
-                    "I'm grateful for their honesty and transparency throughout the process."
-                  </h3>
-                </div>
-                <div class="qorix-review-reel-review-user">
-                  <img class="qorix-review-reel-user-avatar" src="https://i.pravatar.cc/56?img=47"
-                    alt="Saoirse Ronan" />
-                  <div class="qorix-review-reel-user-info">
-                    <p class="qorix-review-reel-user-name">Saoirse Ronan</p>
-                    <p class="qorix-review-reel-review-date">12th April, 2026</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Card 2 -->
-
-          <div class="qorix-review-reel-swiper-slide swiper-slide">
-            <div class="qorix-review-reel-review-card">
-              <div class="qorix-review-reel-review-card-image" data-media-type="video"
-                data-video-src="https://www.w3schools.com/html/mov_bbb.mp4">
-                <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600&q=80"
-                  alt="AHA Smoothing Cream product" />
-                <button class="qorix-review-reel-play-btn" aria-label="Play video review">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_6264_4083)">
-                      <path
-                        d="M20 0C8.97167 0 0 8.97167 0 20C0 31.0283 8.97167 40 20 40C31.0283 40 40 31.0283 40 20C40 8.97167 31.0283 0 20 0ZM27.34 23.1217L18.6533 27.8783C18.1117 28.1833 17.515 28.335 16.9183 28.335C16.2967 28.335 15.6733 28.17 15.1067 27.84C13.995 27.19 13.3333 26.035 13.3333 24.7483V15.25C13.3333 13.9633 13.995 12.8083 15.1067 12.1583C16.215 11.51 17.5483 11.4983 18.67 12.13L27.3233 16.8683C28.4833 17.52 29.165 18.6867 29.165 19.9983C29.165 21.31 28.4833 22.4767 27.3383 23.12L27.34 23.1217ZM25.8333 20C25.8333 20.145 25.7367 20.1983 25.7233 20.2083L17.0367 24.9667C17.005 24.9833 16.9083 25.0367 16.7917 24.965C16.6683 24.8933 16.6683 24.7867 16.6683 24.7517V15.2533C16.6683 15.2183 16.6683 15.1117 16.7917 15.04C16.8367 15.0133 16.8783 15.005 16.915 15.005C16.975 15.005 17.0233 15.0317 17.0533 15.0483L25.7067 19.7883C25.7383 19.8067 25.8333 19.86 25.8333 20.005V20Z"
-                        fill="white" />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_6264_4083">
-                        <rect width="40" height="40" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-
-                </button>
-              </div>
-              <div class="qorix-review-reel-review-card-content">
-                <div class="qorix-review-reel-review-text">
-                  <p class="qorix-review-reel-product-title">Product: Facial Serum Vitamin C</p>
-                  <h3 class="qorix-review-reel-review-quote qorix-review-reel-line-clamp">
-                    "I'm grateful for their honesty and transparency throughout the process."
-                  </h3>
-                </div>
-                <div class="qorix-review-reel-review-user">
-                  <img class="qorix-review-reel-user-avatar" src="https://i.pravatar.cc/56?img=47"
-                    alt="Saoirse Ronan" />
-                  <div class="qorix-review-reel-user-info">
-                    <p class="qorix-review-reel-user-name">Saoirse Ronan</p>
-                    <p class="qorix-review-reel-review-date">12th April, 2026</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-
-          <!-- Card 3 -->
-
-          <div class="qorix-review-reel-swiper-slide swiper-slide">
-            <div class="qorix-review-reel-review-card">
-              <div class="qorix-review-reel-review-card-image" data-media-type="video"
-                data-video-src="https://www.w3schools.com/html/mov_bbb.mp4">
-                <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&q=80"
-                  alt="Skincare product review" />
-                <button class="qorix-review-reel-play-btn" aria-label="Play video review">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_6264_4083)">
-                      <path
-                        d="M20 0C8.97167 0 0 8.97167 0 20C0 31.0283 8.97167 40 20 40C31.0283 40 40 31.0283 40 20C40 8.97167 31.0283 0 20 0ZM27.34 23.1217L18.6533 27.8783C18.1117 28.1833 17.515 28.335 16.9183 28.335C16.2967 28.335 15.6733 28.17 15.1067 27.84C13.995 27.19 13.3333 26.035 13.3333 24.7483V15.25C13.3333 13.9633 13.995 12.8083 15.1067 12.1583C16.215 11.51 17.5483 11.4983 18.67 12.13L27.3233 16.8683C28.4833 17.52 29.165 18.6867 29.165 19.9983C29.165 21.31 28.4833 22.4767 27.3383 23.12L27.34 23.1217ZM25.8333 20C25.8333 20.145 25.7367 20.1983 25.7233 20.2083L17.0367 24.9667C17.005 24.9833 16.9083 25.0367 16.7917 24.965C16.6683 24.8933 16.6683 24.7867 16.6683 24.7517V15.2533C16.6683 15.2183 16.6683 15.1117 16.7917 15.04C16.8367 15.0133 16.8783 15.005 16.915 15.005C16.975 15.005 17.0233 15.0317 17.0533 15.0483L25.7067 19.7883C25.7383 19.8067 25.8333 19.86 25.8333 20.005V20Z"
-                        fill="white" />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_6264_4083">
-                        <rect width="40" height="40" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-
-                </button>
-              </div>
-              <div class="qorix-review-reel-review-card-content">
-                <div class="qorix-review-reel-review-text">
-                  <p class="qorix-review-reel-product-title">Product: Facial Serum Vitamin C</p>
-                  <h3 class="qorix-review-reel-review-quote qorix-review-reel-line-clamp">
-                    "I'm grateful for their honesty and transparency throughout the process."
-                    "I'm grateful for their honesty and transparency throughout the process."
-                    "I'm grateful for their honesty and transparency throughout the process."
-                    "I'm grateful for their honesty and transparency throughout the process."
-                  </h3>
-                </div>
-                <div class="qorix-review-reel-review-user">
-                  <img class="qorix-review-reel-user-avatar" src="https://i.pravatar.cc/56?img=47"
-                    alt="Saoirse Ronan" />
-                  <div class="qorix-review-reel-user-info">
-                    <p class="qorix-review-reel-user-name">Saoirse Ronan</p>
-                    <p class="qorix-review-reel-review-date">12th April, 2026</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- Card 4 (bonus slide to demo carousel) -->
-          <div class="swiper-slide">
-            <div class="qorix-review-reel-review-card">
-              <div class="qorix-review-reel-review-card-image" data-media-type="image">
-                <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=600&q=80"
-                  alt="Product review image" />
-                <button class="qorix-review-reel-play-btn" aria-label="Play video review">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_6264_4083)">
-                      <path
-                        d="M20 0C8.97167 0 0 8.97167 0 20C0 31.0283 8.97167 40 20 40C31.0283 40 40 31.0283 40 20C40 8.97167 31.0283 0 20 0ZM27.34 23.1217L18.6533 27.8783C18.1117 28.1833 17.515 28.335 16.9183 28.335C16.2967 28.335 15.6733 28.17 15.1067 27.84C13.995 27.19 13.3333 26.035 13.3333 24.7483V15.25C13.3333 13.9633 13.995 12.8083 15.1067 12.1583C16.215 11.51 17.5483 11.4983 18.67 12.13L27.3233 16.8683C28.4833 17.52 29.165 18.6867 29.165 19.9983C29.165 21.31 28.4833 22.4767 27.3383 23.12L27.34 23.1217ZM25.8333 20C25.8333 20.145 25.7367 20.1983 25.7233 20.2083L17.0367 24.9667C17.005 24.9833 16.9083 25.0367 16.7917 24.965C16.6683 24.8933 16.6683 24.7867 16.6683 24.7517V15.2533C16.6683 15.2183 16.6683 15.1117 16.7917 15.04C16.8367 15.0133 16.8783 15.005 16.915 15.005C16.975 15.005 17.0233 15.0317 17.0533 15.0483L25.7067 19.7883C25.7383 19.8067 25.8333 19.86 25.8333 20.005V20Z"
-                        fill="white" />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_6264_4083">
-                        <rect width="40" height="40" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-
-                </button>
-              </div>
-              <div class="qorix-review-reel-review-card-content">
-                <div class="qorix-review-reel-review-text">
-                  <p class="qorix-review-reel-product-title">Product: Facial Serum Vitamin C</p>
-                  <h3 class="qorix-review-reel-review-quote qorix-review-reel-line-clamp">
-                    "Absolutely transformed my skincare routine in just two weeks."
-                  </h3>
-                </div>
-                <div class="qorix-review-reel-review-user">
-                  <img class="qorix-review-reel-user-avatar" src="https://i.pravatar.cc/56?img=25" alt="Emma Stone" />
-                  <div class="qorix-review-reel-user-info">
-                    <p class="qorix-review-reel-user-name">Emma Stone</p>
-                    <p class="qorix-review-reel-review-date">2nd June, 2026</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div data-swiper-controller class="qorix-review-reel-swiper-button-next ">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M7.71953 14.53C7.57908 14.3894 7.50019 14.1987 7.50019 14C7.50019 13.8012 7.57908 13.6106 7.71953 13.47L11.1895 9.99999L7.71953 6.52999C7.64993 6.46039 7.59472 6.37776 7.55705 6.28682C7.51939 6.19589 7.5 6.09842 7.5 5.99999C7.5 5.90156 7.51939 5.80409 7.55705 5.71316C7.59472 5.62222 7.64993 5.53959 7.71953 5.46999C7.78913 5.40039 7.87176 5.34518 7.9627 5.30751C8.05364 5.26984 8.1511 5.25046 8.24953 5.25046C8.34796 5.25046 8.44543 5.26984 8.53637 5.30751C8.6273 5.34518 8.70993 5.40039 8.77953 5.46999L12.7795 9.46999C12.92 9.61062 12.9989 9.80124 12.9989 9.99999C12.9989 10.1987 12.92 10.3894 12.7795 10.53L8.77953 14.53C8.63891 14.6704 8.44828 14.7493 8.24953 14.7493C8.05078 14.7493 7.86016 14.6704 7.71953 14.53Z"
-              fill="#4A4A4A" />
-          </svg>
-        </div>
-        <div data-swiper-controller class="qorix-review-reel-swiper-button-prev">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M12.2805 14.53C12.4209 14.3894 12.4998 14.1987 12.4998 14C12.4998 13.8012 12.4209 13.6106 12.2805 13.47L8.81047 9.99999L12.2805 6.52999C12.3501 6.46039 12.4053 6.37776 12.4429 6.28682C12.4806 6.19589 12.5 6.09842 12.5 5.99999C12.5 5.90156 12.4806 5.80409 12.4429 5.71316C12.4053 5.62222 12.3501 5.53959 12.2805 5.46999C12.2109 5.40039 12.1282 5.34518 12.0373 5.30751C11.9464 5.26984 11.8489 5.25046 11.7505 5.25046C11.652 5.25046 11.5546 5.26984 11.4636 5.30751C11.3727 5.34518 11.2901 5.40039 11.2205 5.46999L7.22047 9.46999C7.08002 9.61062 7.00113 9.80124 7.00113 9.99999C7.00113 10.1987 7.08002 10.3894 7.22047 10.53L11.2205 14.53C11.3611 14.6704 11.5517 14.7493 11.7505 14.7493C11.9492 14.7493 12.1398 14.6704 12.2805 14.53Z"
-              fill="#4A4A4A" />
-          </svg>
-        </div>
-        <div class="qorix-review-reel-swiper-pagination"></div>
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+{{ 'qorix-review-reel-widget.css' | asset_url | stylesheet_tag }}
+
+<section data-section="qorix-review-reel-widget" class="qorix-review-reel-real-review-section">
+  {% render 'section-heading' %}
+  <!-- ── Swiper ── -->
+  <div class="qorix-review-reel-swiper-wrapper">
+    <div class="qorix-review-reel-swiper swiper mySwiper">
+      <div class="swiper-wrapper">
+        {% render 'qorix-review-reel-widget-card',
+          video_src: 'https://www.pexels.com/download/video/7667953/',
+          product_title: 'Product: Facial Serum Vitamin C taj',
+          review_quote: "I'm grateful for their honesty and transparency throughout the process.",
+          user_avatar: 'https://i.pravatar.cc/56?img=47',
+          user_name: 'Saoirse Ronan',
+          review_date: '12th April, 2026'
+        %}
+
+        {% render 'qorix-review-reel-widget-card',
+          video_src: 'https://www.pexels.com/download/video/7667953/',
+          product_title: 'Product: Facial Serum Vitamin C taj',
+          review_quote: 'I was initially hesitant about applying for a mortgage',
+          user_avatar: 'https://i.pravatar.cc/56?img=32',
+          user_name: 'Jennifer Lawrence',
+          review_date: '16th April, 2026'
+        %}
+
+        {% render 'qorix-review-reel-widget-card',
+          video_src: 'https://www.pexels.com/download/video/7667953/',
+          product_title: 'Product: Facial Serum Vitamin C Taj',
+          review_quote: 'Trust is paramount when it comes to choosing a mortgage lender',
+          user_avatar: 'https://i.pravatar.cc/56?img=51',
+          user_name: 'Bruce Wills',
+          review_date: '17th May, 2026'
+        %}
+
+        {% render 'qorix-review-reel-widget-card',
+          video_src: 'https://www.pexels.com/download/video/7667953/',
+          product_title: 'Product: AHA Smoothing Cream',
+          review_quote: 'The results exceeded my expectations completely',
+          user_avatar: 'https://i.pravatar.cc/56?img=12',
+          user_name: 'Emma Watson',
+          review_date: '20th May, 2026'
+        %}
+
+        {% render 'qorix-review-reel-widget-card',
+          video_src: 'https://www.pexels.com/download/video/7667953/',
+          product_title: 'Product: Hydrating Face Mist',
+          review_quote: 'Best skincare purchase I have made this year',
+          user_avatar: 'https://i.pravatar.cc/56?img=25',
+          user_name: 'Ryan Reynolds',
+          review_date: '25th May, 2026'
+        %}
       </div>
+
+      <div class="qorix-review-reel-swiper-pagination"></div>
     </div>
-  </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-  <script>
-    new Swiper(".mySwiper", {
-      slidesPerView: 3,
-      spaceBetween: 24,
-      loop: true,
-      navigation: {
-        nextEl: ".qorix-review-reel-swiper-button-next",
-        prevEl: ".qorix-review-reel-swiper-button-prev",
-      },
-      pagination: {
-        el: ".qorix-review-reel-swiper-pagination",
-        clickable: true,
-      },
-      breakpoints: {
-        961: { slidesPerView: 3, spaceBetween: 24 },
-        601: { slidesPerView: 2, spaceBetween: 20 },
-        0: { slidesPerView: 1, spaceBetween: 16 },
-      },
-    });
-    document.querySelectorAll('.qorix-review-reel-review-card-image[data-media-type="video"]').forEach(wrapper => {
-      const btn = wrapper.querySelector('.qorix-review-reel-play-btn');
-      const videoSrc = wrapper.dataset.videoSrc;
+    <div data-swiper-controller class="qorix-review-reel-swiper-button-next ">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M7.71953 14.53C7.57908 14.3894 7.50019 14.1987 7.50019 14C7.50019 13.8012 7.57908 13.6106 7.71953 13.47L11.1895 9.99999L7.71953 6.52999C7.64993 6.46039 7.59472 6.37776 7.55705 6.28682C7.51939 6.19589 7.5 6.09842 7.5 5.99999C7.5 5.90156 7.51939 5.80409 7.55705 5.71316C7.59472 5.62222 7.64993 5.53959 7.71953 5.46999C7.78913 5.40039 7.87176 5.34518 7.9627 5.30751C8.05364 5.26984 8.1511 5.25046 8.24953 5.25046C8.34796 5.25046 8.44543 5.26984 8.53637 5.30751C8.6273 5.34518 8.70993 5.40039 8.77953 5.46999L12.7795 9.46999C12.92 9.61062 12.9989 9.80124 12.9989 9.99999C12.9989 10.1987 12.92 10.3894 12.7795 10.53L8.77953 14.53C8.63891 14.6704 8.44828 14.7493 8.24953 14.7493C8.05078 14.7493 7.86016 14.6704 7.71953 14.53Z"
+          fill="#4A4A4A" />
+      </svg>
+    </div>
+    <div data-swiper-controller class="qorix-review-reel-swiper-button-prev">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M12.2805 14.53C12.4209 14.3894 12.4998 14.1987 12.4998 14C12.4998 13.8012 12.4209 13.6106 12.2805 13.47L8.81047 9.99999L12.2805 6.52999C12.3501 6.46039 12.4053 6.37776 12.4429 6.28682C12.4806 6.19589 12.5 6.09842 12.5 5.99999C12.5 5.90156 12.4806 5.80409 12.4429 5.71316C12.4053 5.62222 12.3501 5.53959 12.2805 5.46999C12.2109 5.40039 12.1282 5.34518 12.0373 5.30751C11.9464 5.26984 11.8489 5.25046 11.7505 5.25046C11.652 5.25046 11.5546 5.26984 11.4636 5.30751C11.3727 5.34518 11.2901 5.40039 11.2205 5.46999L7.22047 9.46999C7.08002 9.61062 7.00113 9.80124 7.00113 9.99999C7.00113 10.1987 7.08002 10.3894 7.22047 10.53L11.2205 14.53C11.3611 14.6704 11.5517 14.7493 11.7505 14.7493C11.9492 14.7493 12.1398 14.6704 12.2805 14.53Z"
+          fill="#4A4A4A" />
+      </svg>
+    </div>
+  </div>
+</section>
 
-      btn.addEventListener('click', () => {
-        const video = document.createElement('video');
-        video.src = videoSrc;
-        video.controls = true;
-        video.autoplay = true;
-        video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;border-radius:8px;';
-        wrapper.appendChild(video);
-        btn.style.display = 'none';
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer></script>
+
+<script>
+  (function () {
+    function initReviewReel() {
+      var container = document.querySelector('.mySwiper');
+      if (!container) return;
+
+      var wrapper = container.closest('.qorix-review-reel-real-review-section');
+      var computedStyle = getComputedStyle(wrapper || container);
+      var navCols = parseInt(computedStyle.getPropertyValue('---nav-cols').trim()) || 3;
+
+      new Swiper('.mySwiper', {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        observer: true,
+        observeParents: true,
+        navigation: {
+          nextEl: document.querySelector('.qorix-review-reel-swiper-button-next'),
+          prevEl: document.querySelector('.qorix-review-reel-swiper-button-prev'),
+        },
+        pagination: {
+          el: '.qorix-review-reel-swiper-pagination',
+          clickable: true,
+        },
+        breakpoints: {
+          601: { slidesPerView: 2, spaceBetween: 20 },
+          961: { slidesPerView: navCols, spaceBetween: 24 },
+        },
       });
-    });
-  </script>
-</body>
 
-</html>
+      document
+        .querySelectorAll('.qorix-review-reel-review-card-image[data-media-type="video"]')
+        .forEach(function (wrapper) {
+          var btn = wrapper.querySelector('.qorix-review-reel-play-btn');
+          var videoSrc = wrapper.dataset.videoSrc;
+
+          btn.addEventListener('click', function () {
+            var video = document.createElement('video');
+            video.src = videoSrc;
+            video.controls = true;
+            video.autoplay = true;
+            video.style.cssText =
+              'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;border-radius:8px;';
+            wrapper.appendChild(video);
+            btn.style.display = 'none';
+          });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initReviewReel);
+    } else {
+      initReviewReel();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "review reel",
+  "target": "section",
+  "settings": [
+    { "type": "product", "id": "product", "label": "product", "autofill": true },
+    { "type": "color", "id": "colour", "label": "Star Colour", "default": "#ff0000" }
+  ]
+}
+{% endschema %}
