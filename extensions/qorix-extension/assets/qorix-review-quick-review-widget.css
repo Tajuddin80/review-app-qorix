@@ -1,0 +1,1504 @@
+/* ============================================================
+   Qorix Review Widget — Fully Responsive CSS
+   Breakpoints: 480px (xs), 640px (sm), 768px (md), 1024px (lg)
+   ============================================================ */
+
+/* ── Frame (Full-width background) ─────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-frame {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  margin-top: 60px;
+  background: #FFFFFF;
+}
+
+/* ── Container (Centred inner wrapper) ─────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  gap: 40px;
+  width: 90vw;
+  max-width: 1240px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* ── Header bar ─────────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ── Header left ────────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 21px;
+  width: 100%;
+  max-width: 352px;
+  height: auto;
+  flex: 1 1 260px;
+}
+
+/* ── Title block ────────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-header-title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 16px;
+  width: 100%;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-header-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 12px;
+  width: 100%;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-header-title {
+  width: 100%;
+  height: auto;
+  font-weight: 500;
+  font-size: clamp(17px, 2.5vw, 20px);
+  line-height: 1.3;
+  color: var(---color-text-primary);
+}
+
+/* ── Rating row ─────────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-rating-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 0;
+  gap: 8px;
+  width: 100%;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-rating-num-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-rating-num {
+  width: auto;
+  height: auto;
+  font-weight: 500;
+  font-size: clamp(36px, 5vw, 52px);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(---color-text-primary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-rating-meta {
+  width: auto;
+  height: auto;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.25;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(---color-text-secondary);
+  white-space: nowrap;
+}
+
+/* ── Write a Review button ──────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-btn-green {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 40px;
+  gap: 10px;
+  width: auto;
+  min-width: 160px;
+  height: 44px;
+  background: #108848;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-btn-text {
+  width: auto;
+  height: 20px;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 20px;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+/* ── Header right (Sort/Filter pills) ──────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  gap: 8px;
+  position: relative;
+  width: auto;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-icon-pill {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 16px;
+  gap: 2px;
+  width: 56px;
+  height: 36px;
+  background: #FFFFFF;
+  box-shadow: inset 0px -1px 0px #B5B5B5, inset 0px 0px 0px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0px 1.5px #FFFFFF;
+  border-radius: 99px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-icon-pill+.qorix-review-quick-review-icon-pill {
+  order: 1;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-icon-sort {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-vector-sort-1 {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  top: 26.25%;
+  bottom: 66.25%;
+  background: #303030;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-vector-sort-2 {
+  position: absolute;
+  left: 33.75%;
+  right: 33.75%;
+  top: 66.25%;
+  bottom: 26.25%;
+  background: #4A4A4A;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-vector-sort-3 {
+  position: absolute;
+  left: 23.75%;
+  right: 23.75%;
+  top: 46.25%;
+  bottom: 46.25%;
+  background: #4A4A4A;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-icon-filter {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: calc(50% - 12px);
+  top: calc(50% - 12px);
+}
+
+/* ── Content area ───────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-content-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 30px;
+  width: 100%;
+  height: auto;
+  order: 1;
+  align-self: stretch;
+}
+
+/* ── Filters panel ──────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-filters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-filters-title {
+  width: 100%;
+  height: auto;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  color: var(---color-text-primary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-rating-filter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 12px;
+  width: 100%;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-rating-label {
+  width: 100%;
+  height: auto;
+  font-size: 1rem;
+  line-height: 1.2;
+  color: var(---color-text-primary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-filter-pills {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  gap: 8px;
+  width: 100%;
+  height: auto;
+  flex-wrap: wrap;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-pill {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px;
+  gap: 2px;
+  height: 32px;
+  background: #FFFFFF;
+  box-shadow: inset 0px -1px 0px #B5B5B5, inset 0px 0px 0px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0px 1.5px #FFFFFF;
+  border-radius: 99px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(---color-text-primary);
+  white-space: nowrap;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-pill.active {
+  background: var(---color-text-green);
+  color: #FFFFFF;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-pill .qorix-review-quick-review-star-filled {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-pill .qorix-review-quick-review-star-filled svg {
+  position: absolute;
+  left: 15.97%;
+  right: 15.98%;
+  bottom: 2.61%;
+  width: 24px;
+  height: 24px;
+}
+
+/* ── Reviews section ────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 30px;
+  width: 100%;
+  height: auto;
+  order: 1;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-line-9 {
+  width: 100%;
+  height: 0;
+  border: 1px solid #CFCFCF;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-reviews-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 30px;
+  width: 100%;
+  height: auto;
+  align-self: stretch;
+}
+
+/* ── Individual review item ─────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 20px;
+  width: 100%;
+  max-width: 846px;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-stars-user-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 16px;
+  width: 100%;
+  height: auto;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-stars-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  width: 120px;
+  height: 24px;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-star-item {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-star-item svg {
+  position: absolute;
+  left: 15.97%;
+  right: 15.98%;
+  top: 17.05%;
+  bottom: 17.61%;
+  width: 24px;
+  height: 24px;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-user-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 8px;
+  width: 100%;
+  height: auto;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-user-meta-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  gap: 12px;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-avatar {
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  border-radius: 99px;
+  border: 1px solid #E0E0E0;
+  position: relative;
+  flex: none;
+  overflow: hidden;
+  background-color: #F0F0F0;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-user-placeholder-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: calc(50% - 20px);
+  top: calc(50% - 20px);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-user-placeholder-vector-1 {
+  position: absolute;
+  left: 32.03%;
+  right: 32.03%;
+  top: 21.09%;
+  bottom: 42.97%;
+  background: #4A4A4A;
+  border-radius: 50%;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-user-placeholder-vector-2 {
+  position: absolute;
+  left: 18.69%;
+  right: 18.69%;
+  top: 63.28%;
+  bottom: 15.16%;
+  background: #4A4A4A;
+  border-radius: 12px 12px 0 0;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-user-text-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+  gap: 4px;
+  height: auto;
+  width: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-user-name {
+  height: auto;
+  width: auto;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(---color-text-primary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-user-date {
+  width: auto;
+  height: auto;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(---color-text-secondary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 8px;
+  width: 100%;
+  height: auto;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-product-name {
+  width: 100%;
+  height: auto;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(---color-text-primary);
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-body-text {
+  width: 100%;
+  height: auto;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(---color-text-secondary);
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-media-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  gap: 12px;
+  width: 100%;
+  max-width: 294px;
+  height: 90px;
+  flex-wrap: wrap;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-thumb {
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  background-color: #E9E9E9;
+  background-size: cover;
+  background-position: center;
+  flex: none;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-divider {
+  width: 100%;
+  height: 0;
+  border: 1px solid #CFCFCF;
+  align-self: stretch;
+}
+
+/* ── Sort menu ──────────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-menu {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 4px;
+  gap: 4px;
+  position: absolute;
+  width: 202px;
+  height: auto;
+  right: 0;
+  top: 42px;
+  background: #FFFFFF;
+  box-shadow: 0px 8px 24px -8px rgba(0, 0, 0, 0.28), 0px 8px 16px -4px rgba(0, 0, 0, 0.05), 0px 3px 6px rgba(0, 0, 0, 0.05), 0px 2px 4px rgba(0, 0, 0, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  z-index: 200;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-menu.hidden {
+  display: none;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-menu-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
+  gap: 4px;
+  width: 194px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-menu-item.active {
+  background: #F0F0F0;
+  border-radius: 4px;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-menu-item-blank {
+  display: none;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-menu-item-text {
+  width: auto;
+  height: 20px;
+  font-size: 1rem;
+  line-height: 20px;
+  color: var(---color-text-primary);
+}
+
+/* ── Modal overlay ──────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-modal-overlay.hidden {
+  display: none;
+}
+
+/* ── Review Form Card (Modal) ───────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 16px;
+  isolation: isolate;
+  position: fixed;
+  width: calc(100% - 32px);
+  max-width: 520px;
+  height: auto;
+  max-height: 90vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #FFFFFF;
+  border: 1px solid #F0F0F0;
+  box-shadow: 0px 16px 32px -4px rgba(12, 12, 13, 0.1);
+  border-radius: 12px;
+  z-index: 1001;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-card.hidden {
+  display: none;
+}
+
+/* ── Form header ────────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0;
+  gap: 16px;
+  width: 100%;
+  height: auto;
+  min-height: 56px;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-title-designation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  gap: 16px;
+  height: auto;
+  min-height: 56px;
+  flex: 1 1 auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-avatar {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  background: #108848;
+  border-radius: 99px;
+  position: relative;
+  flex: none;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-avatar-icon-container {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  left: calc(50% - 13px);
+  top: calc(50% - 13px);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-avatar-icon-container svg {
+  position: absolute;
+  left: 12.5%;
+  right: 9.37%;
+  top: 9.37%;
+  bottom: 12.5%;
+  width: 20.28px;
+  height: 20.28px;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-title-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 8px;
+  width: 100%;
+  height: auto;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-title-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  gap: 8px;
+  width: 100%;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-title-text {
+  width: 100%;
+  height: auto;
+  font-weight: 500;
+  font-size: clamp(16px, 2.5vw, 20px);
+  line-height: 1.25;
+  color: var(---color-text-primary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-subtitle-text {
+  width: 100%;
+  height: auto;
+  font-size: 0.9rem;
+  line-height: 1.25;
+  color: var(---color-text-primary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-close-btn {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-close-btn svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+}
+
+/* ── Form rating field ──────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-rating-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 6px;
+  width: 100%;
+  height: auto;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-rating-label {
+  width: auto;
+  height: auto;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(---color-text-primary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-rating-stars-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  width: 140px;
+  height: 28px;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-star-item {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  cursor: pointer;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-star-item svg {
+  box-sizing: border-box;
+  position: absolute;
+  left: 15.97%;
+  right: 15.98%;
+  top: 17.05%;
+  bottom: 17.61%;
+  width: 18.89px;
+  height: 18.29px;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-star-item svg path {
+  fill: #FFFFFF;
+  stroke: #606060;
+  stroke-width: 1.3px;
+  transition: fill 0.2s, stroke 0.2s;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-star-item.selected svg path,
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-star-item.hovered svg path {
+  fill: #FF9500;
+  stroke: #FF9500;
+}
+
+/* ── Form review textarea ───────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-review-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 6px;
+  width: 100%;
+  height: auto;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-review-label {
+  width: 100%;
+  height: auto;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(---color-text-primary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-textarea-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 12px 8px 12px 12px;
+  gap: 8px;
+  width: 100%;
+  min-height: 113px;
+  border: 1px solid #B8B8B8;
+  border-radius: 8px;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-textarea {
+  width: 100%;
+  min-height: 89px;
+  border: none;
+  outline: none;
+  resize: vertical;
+  background: transparent;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(---color-text-primary);
+  font-family: inherit;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-textarea::placeholder {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(---color-text-secondary);
+}
+
+/* ── Name / Email row ───────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-name-email-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  gap: 16px;
+  width: 100%;
+  height: auto;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-name-field,
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-email-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 6px;
+  flex: 1 1 0;
+  min-width: 0;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-name-label,
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-email-label {
+  width: 100%;
+  height: auto;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(---color-text-primary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-input-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 8px 10px 12px;
+  gap: 8px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #B8B8B8;
+  border-radius: 8px;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(---color-text-primary);
+  font-family: inherit;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-input::placeholder {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(---color-text-secondary);
+}
+
+/* ── Media upload ───────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-media-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  gap: 16px;
+  width: 100%;
+  height: auto;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-media-inner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 6px;
+  width: 100%;
+  height: auto;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-media-label {
+  width: 100%;
+  height: auto;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(---color-text-primary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: 0;
+  gap: 12px;
+  width: 100%;
+  height: auto;
+  min-height: 104px;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-main {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  gap: 8px;
+  flex: 1 1 0;
+  min-height: 104px;
+  background: #F8F8F8;
+  border: 0.66px dashed #8A8A8A;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-main-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  gap: 8px;
+  width: 100%;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-icon-container {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-icon-container svg {
+  position: absolute;
+  left: 12.5%;
+  right: 12.5%;
+  top: 12.5%;
+  bottom: 12.5%;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-text-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+  gap: 8px;
+  width: auto;
+  height: auto;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-title-text {
+  width: 100%;
+  height: auto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(---color-text-primary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-sub-text {
+  width: 100%;
+  height: auto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(---color-text-secondary);
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-more {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  gap: 8px;
+  width: 88px;
+  min-width: 72px;
+  min-height: 104px;
+  background: #F8F8F8;
+  border: 0.66px dashed #8A8A8A;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-more-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  gap: 8px;
+  width: auto;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-more-icon-container {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-more-icon-container svg {
+  position: absolute;
+  left: 18.75%;
+  right: 18.75%;
+  top: 18.75%;
+  bottom: 18.75%;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-more-text {
+  width: auto;
+  height: auto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: center;
+  color: var(---color-text-secondary);
+}
+
+/* ── Submit button ──────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-submit-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  gap: 10px;
+  width: 100%;
+  height: 44px;
+  background: #108848;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  align-self: stretch;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-submit-btn-text {
+  width: auto;
+  height: 20px;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+/* ── Form footer ────────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  gap: 8px;
+  width: 100%;
+  height: auto;
+  flex-wrap: wrap;
+  align-self: center;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-footer-lock-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  gap: 4px;
+  height: auto;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-footer-lock-icon {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-footer-lock-icon svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-footer-lock-text,
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-footer-bullet,
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-footer-public-text {
+  height: auto;
+  width: auto;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(---color-text-secondary);
+  white-space: nowrap;
+}
+
+/* ── Video thumbnails ───────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-thumb-video {
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  background-color: #000;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  flex: none;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-thumb-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-video-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-video-play-overlay svg {
+  width: 24px;
+  height: 24px;
+}
+
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-video-play-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Empty state ────────────────────────────────────────────── */
+[data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-no-reviews {
+  padding: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: var(---color-text-secondary);
+  width: 100%;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* ── Large tablet / small desktop (≤ 1024px) ────────────────── */
+@media (max-width: 1024px) {
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-container {
+    width: 92vw;
+    gap: 32px;
+  }
+}
+
+/* ── Tablet (≤ 768px) ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-frame {
+    margin-top: 20px;
+    padding: 20px 0;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-container {
+    width: 92vw;
+    gap: 24px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-header-left {
+    max-width: 100%;
+    flex: 1 1 auto;
+    gap: 16px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-header-right {
+    align-self: flex-end;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-btn-green {
+    width: 100%;
+    max-width: none;
+    padding: 12px 24px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-filters {
+    max-width: 100%;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-user-placeholder-icon {
+    width: 32px;
+    height: 32px;
+    left: calc(50% - 16px);
+    top: calc(50% - 16px);
+  }
+}
+
+/* ── Large mobile (≤ 640px) ─────────────────────────────────── */
+@media (max-width: 640px) {
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-container {
+    width: 94vw;
+    gap: 20px;
+  }
+
+  /* Stack name/email fields vertically */
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-name-email-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-name-field,
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-email-field {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  /* Stack upload row vertically */
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-row {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-main {
+    width: 100%;
+    min-height: 90px;
+    padding: 20px 16px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-more {
+    width: 100%;
+    min-height: 56px;
+    padding: 12px 16px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-upload-more-inner {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  /* Shrink form card padding */
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-card {
+    padding: 16px;
+    gap: 14px;
+    width: calc(100% - 24px);
+    max-height: 95vh;
+  }
+}
+
+/* ── Small mobile (≤ 480px) ─────────────────────────────────── */
+@media (max-width: 480px) {
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-frame {
+    margin-top: 12px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-container {
+    width: 96vw;
+    gap: 16px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-rating-num {
+    font-size: 40px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-filter-pills {
+    gap: 6px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-pill {
+    padding: 4px 10px;
+    font-size: 0.875rem;
+    height: 30px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-media-row {
+    gap: 8px;
+    max-width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-thumb,
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-thumb-video {
+    width: 80px;
+    height: 80px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-card {
+    padding: 14px;
+    gap: 12px;
+    width: calc(100% - 16px);
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-avatar {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-title-designation {
+    gap: 12px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-footer {
+    gap: 6px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-footer-lock-text,
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-footer-public-text,
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-footer-bullet {
+    font-size: 11px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-reviews {
+    gap: 20px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-reviews-list {
+    gap: 20px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-item {
+    gap: 14px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-menu {
+    width: 180px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-menu-item {
+    width: 172px;
+  }
+}
+
+/* ── Very small mobile (≤ 360px) ────────────────────────────── */
+@media (max-width: 360px) {
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-container {
+    width: 97vw;
+    gap: 14px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-filter-pills {
+    gap: 5px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-pill {
+    padding: 4px 8px;
+    font-size: 0.8125rem;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-thumb,
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-review-thumb-video {
+    width: 72px;
+    height: 72px;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-card {
+    padding: 12px;
+    width: calc(100% - 12px);
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-title-text {
+    font-size: 15px;
+  }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-modal-overlay {
+    transition: none;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-form-star-item svg path {
+    transition: none;
+  }
+
+  [data-section="qorix-review-quick-review-widget"] .qorix-review-quick-review-video-play-overlay {
+    transition: none;
+  }
+}
