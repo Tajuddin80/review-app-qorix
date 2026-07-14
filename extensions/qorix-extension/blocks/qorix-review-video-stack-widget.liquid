@@ -18,7 +18,38 @@
             review_quote: 'My skin has never felt better...',
             loop_video: true
           %}
-
+          {% render 'qorix-review-video-stack-widget-card',
+            video_src: '',
+            rating: 1,
+            reviewer_name: 'Ava Rubina.',
+            verified: true,
+            review_quote: 'My skin has never felt better...',
+            loop_video: true
+          %}
+          {% render 'qorix-review-video-stack-widget-card',
+            video_src: '',
+            rating: 1,
+            reviewer_name: 'Ava Rubina.',
+            verified: true,
+            review_quote: 'My skin has never felt better...',
+            loop_video: true
+          %}
+          {% render 'qorix-review-video-stack-widget-card',
+            video_src: '',
+            rating: 1,
+            reviewer_name: 'Ava Rubina.',
+            verified: true,
+            review_quote: 'My skin has never felt better...',
+            loop_video: true
+          %}
+          {% render 'qorix-review-video-stack-widget-card',
+            video_src: '',
+            rating: 1,
+            reviewer_name: 'Ava Rubina.',
+            verified: true,
+            review_quote: 'My skin has never felt better...',
+            loop_video: true
+          %}
           {% render 'qorix-review-video-stack-widget-card',
             video_src: 'https://www.pexels.com/download/video/7667953/',
             rating: 3,
@@ -55,38 +86,6 @@
             review_quote: 'My skin has never felt better...',
             loop_video: true
           %}
-          {% render 'qorix-review-video-stack-widget-card',
-            video_src: 'https://www.pexels.com/download/video/7667953/',
-            rating: 1,
-            reviewer_name: 'Ava Rubina.',
-            verified: true,
-            review_quote: 'My skin has never felt better...',
-            loop_video: true
-          %}
-          {% render 'qorix-review-video-stack-widget-card',
-            video_src: 'https://www.pexels.com/download/video/7667953/',
-            rating: 1,
-            reviewer_name: 'Ava Rubina.',
-            verified: true,
-            review_quote: 'My skin has never felt better...',
-            loop_video: true
-          %}
-          {% render 'qorix-review-video-stack-widget-card',
-            video_src: 'https://www.pexels.com/download/video/7667953/',
-            rating: 1,
-            reviewer_name: 'Ava Rubina.',
-            verified: true,
-            review_quote: 'My skin has never felt better...',
-            loop_video: true
-          %}
-          {% render 'qorix-review-video-stack-widget-card',
-            video_src: 'https://www.pexels.com/download/video/7667953/',
-            rating: 1,
-            reviewer_name: 'Ava Rubina.',
-            verified: true,
-            review_quote: 'My skin has never felt better...',
-            loop_video: true
-          %}
         </div>
         <!-- /.swiper-wrapper -->
       </div>
@@ -94,19 +93,7 @@
     </div>
     <!-- /.qorix-review-video-stack-swiper-clip -->
 
-    <!-- Pagination bullets (matches reel swiper-pagination-bullets style) -->
-    <div class="qorix-review-video-stack-custom-pagination">
-      <button class="qorix-review-video-stack-dot" type="button" data-index="0" aria-label="Show video 1"></button>
-      <button class="qorix-review-video-stack-dot" type="button" data-index="1" aria-label="Show video 2"></button>
-      <button
-        class="qorix-review-video-stack-dot active"
-        type="button"
-        data-index="2"
-        aria-label="Show video 3"
-      ></button>
-      <button class="qorix-review-video-stack-dot" type="button" data-index="3" aria-label="Show video 4"></button>
-      <button class="qorix-review-video-stack-dot" type="button" data-index="4" aria-label="Show video 5"></button>
-    </div>
+    <div class="qorix-review-video-stack-custom-pagination"></div>
 
     <!-- Navigation arrows -->
     <button class="qorix-review-video-stack-nav qorix-review-video-stack-nav-prev" aria-label="Previous slide">
@@ -143,23 +130,14 @@
       const loopVideoSetting = computedStyle.getPropertyValue('--loop-video').trim() === 'true';
 
       const stackSlides = Array.from(section.querySelectorAll('.qorix-review-video-stack-swiper .swiper-slide'));
-      const stackDots = Array.from(section.querySelectorAll('.qorix-review-video-stack-dot'));
+      const paginationContainer = section.querySelector('.qorix-review-video-stack-custom-pagination');
       const stackPrev = section.querySelector('.qorix-review-video-stack-nav-prev');
       const stackNext = section.querySelector('.qorix-review-video-stack-nav-next');
 
-      const stackClasses = [
-        'qorix-review-video-stack-visible-slide',
-        'qorix-review-video-stack-tier-center',
-        'qorix-review-video-stack-tier-adjacent',
-        'qorix-review-video-stack-tier-outer',
-        'qorix-review-video-stack-position--2',
-        'qorix-review-video-stack-position--1',
-        'qorix-review-video-stack-position-0',
-        'qorix-review-video-stack-position-1',
-        'qorix-review-video-stack-position-2',
-      ];
+      const halfCols = Math.floor(navCols / 2);
 
-      let activeVideoIndex = 2;
+      let activeVideoIndex = Math.min(halfCols, stackSlides.length - 1);
+      let stackDots = [];
       let autoplayTimer = null;
       let currentVideo = null; // tracks the currently playing <video>
       let dragMoved = false;
@@ -227,11 +205,25 @@
       }
 
       function renderStack() {
+        const positionClasses = [
+          'qorix-review-video-stack-visible-slide',
+          'qorix-review-video-stack-tier-center',
+          'qorix-review-video-stack-tier-adjacent',
+          'qorix-review-video-stack-tier-outer',
+          'qorix-review-video-stack-position--2',
+          'qorix-review-video-stack-position--1',
+          'qorix-review-video-stack-position-0',
+          'qorix-review-video-stack-position-1',
+          'qorix-review-video-stack-position-2',
+        ];
+
         stackSlides.forEach(function (slide, index) {
-          slide.classList.remove.apply(slide.classList, stackClasses);
+          slide.classList.remove.apply(slide.classList, positionClasses);
+          slide.style.transform = '';
+          slide.style.zIndex = '';
 
           const offset = getStackOffset(index, activeVideoIndex, stackSlides.length);
-          if (Math.abs(offset) > 2) return;
+          if (Math.abs(offset) > halfCols) return;
 
           const tier =
             offset === 0
@@ -240,14 +232,41 @@
               ? 'qorix-review-video-stack-tier-adjacent'
               : 'qorix-review-video-stack-tier-outer';
 
-          slide.classList.add(
-            'qorix-review-video-stack-visible-slide',
-            tier,
-            'qorix-review-video-stack-position-' + offset
-          );
+          slide.classList.add('qorix-review-video-stack-visible-slide', tier);
+
+          if (Math.abs(offset) <= 2) {
+            slide.classList.add('qorix-review-video-stack-position-' + offset);
+          } else {
+            var style = getComputedStyle(section);
+            var dAdjacent = parseFloat(style.getPropertyValue('--d-adjacent'));
+            var dOuter = parseFloat(style.getPropertyValue('--d-outer'));
+            var cardWOuter = parseFloat(style.getPropertyValue('--card-w-outer'));
+            var gap = parseFloat(style.getPropertyValue('--gap'));
+            var distance = dOuter + (Math.abs(offset) - 2) * (cardWOuter + gap);
+            var sign = offset > 0 ? '' : '-';
+            slide.style.transform = 'translate(calc(' + sign + distance + 'px - var(--card-w-center) / 2), -50%)';
+            slide.style.zIndex = 1;
+          }
         });
 
         updatePagination(activeVideoIndex);
+      }
+
+      function initPagination() {
+        paginationContainer.innerHTML = '';
+        stackDots = [];
+        for (let i = 0; i < stackSlides.length; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'qorix-review-video-stack-dot';
+          dot.type = 'button';
+          dot.dataset.index = i;
+          dot.setAttribute('aria-label', 'Show video ' + (i + 1));
+          dot.addEventListener('click', function () {
+            goToVideo(parseInt(dot.dataset.index, 10));
+          });
+          paginationContainer.appendChild(dot);
+          stackDots.push(dot);
+        }
       }
 
       function updatePagination(activeIndex) {
@@ -303,13 +322,6 @@
         window.clearInterval(autoplayTimer);
         autoplayTimer = null;
       }
-
-      /* ── Pagination dot clicks ── */
-      stackDots.forEach(function (dot) {
-        dot.addEventListener('click', function () {
-          goToVideo(parseInt(dot.getAttribute('data-index'), 10));
-        });
-      });
 
       /* ── Nav arrow clicks ── */
       stackPrev.addEventListener('click', function () {
@@ -530,6 +542,7 @@
       });
 
       /* ── Initialise ── */
+      initPagination();
       renderStack();
       if (autoplayEnabled) {
         restartAutoplay();
