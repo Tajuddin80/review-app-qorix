@@ -1,5 +1,3 @@
-
-
 /* ════════ SECTION ════════ */
 [data-section="qorix-review-video-stack-widget"] {
   --nav-cols: 5;
@@ -12,14 +10,6 @@
   --loop-video: true;
   --star-color: #FF9500;
   --overlay-tint: rgba(0, 0, 0, 0);
-
-  /* Layout calculations */
-  --card-w-center: 270px;
-  --card-w-adjacent: 270px;
-  --card-w-outer: 174px;
-  --gap: var(--gap-between-cards, 20px);
-  --d-adjacent: calc(var(--card-w-center) / 2 + var(--gap) + var(--card-w-adjacent) / 2);
-  --d-outer: calc(var(--d-adjacent) + var(--card-w-adjacent) / 2 + var(--gap) + var(--card-w-outer) / 2);
 }
 
 [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-section {
@@ -48,7 +38,6 @@
 [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper-clip {
   overflow: hidden;
   width: 100%;
-  max-width: 1248px;
   /* Extra vertical padding so tallest active card is not vertically clipped */
   padding: 10px 0;
   margin: -10px auto;
@@ -59,9 +48,17 @@
   width: 100%;
   /* match figma max height */
   height: 573px;
+
+  /* Populated by JS at runtime based on container width and --nav-cols */
+  --gap: var(--gap-between-cards, 20px);
+  --card-w-center: 270px;
+  --card-w-adjacent: 220px;
+  --card-w-outer: 174px;
+  --d-adjacent: calc(var(--card-w-center) / 2 + var(--gap) + var(--card-w-adjacent) / 2);
+  --d-outer: calc(var(--d-adjacent) + var(--card-w-adjacent) / 2 + var(--gap) + var(--card-w-outer) / 2);
 }
 
-[data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper .swiper-wrapper {
+[data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper-wrapper {
   position: relative;
   display: block;
   height: 100%;
@@ -71,7 +68,7 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-[data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper .swiper-slide {
+[data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper-slide {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -90,17 +87,17 @@
     transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-[data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper .swiper-slide.qorix-review-video-stack-visible-slide {
+[data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper-slide.qorix-review-video-stack-visible-slide {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-[data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper .swiper-slide-active {
+[data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper-slide-active {
   justify-content: center;
 }
 
-[data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper .swiper-slide-active~.swiper-slide {
+[data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper-slide-active~.qorix-review-video-stack-swiper-slide {
   justify-content: center;
 }
 
@@ -324,11 +321,11 @@
 }
 
 [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-nav-prev {
-  left: 50px;
+  left: 20px;
 }
 
 [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-nav-next {
-  right: 50px;
+  right: 20px;
 }
 
 /* ── Pagination dots ── */
@@ -361,32 +358,17 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 1024px) {
-  [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-nav-prev {
-    left: 20px;
-  }
-
-  [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-nav-next {
-    right: 20px;
-  }
-}
 
 @media (max-width: 768px) {
-  [data-section="qorix-review-video-stack-widget"] {
-    --card-w-center: 230px;
-    --card-w-adjacent: 190px;
-    --card-w-outer: 130px;
+  [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper {
     --gap: var(--gap-between-cards-mobile, 10px);
+    height: 450px;
   }
 
   [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-section {
     padding: 60px 0;
     gap: 36px;
     width: 95vw;
-  }
-
-  [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper {
-    height: 450px;
   }
 
   [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-card {
@@ -406,12 +388,30 @@
   }
 }
 
+@media (max-width: 610px) {
+  [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper {
+    height: 420px;
+  }
+
+  [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-card {
+    height: 280px;
+  }
+
+  [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-tier-adjacent .qorix-review-video-stack-card {
+    height: 340px;
+    filter: brightness(0.75);
+  }
+
+  [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-tier-center .qorix-review-video-stack-card {
+    height: 420px;
+    filter: brightness(1);
+  }
+}
+
 @media (max-width: 480px) {
-  [data-section="qorix-review-video-stack-widget"] {
-    --card-w-center: 190px;
-    --card-w-adjacent: 155px;
-    --card-w-outer: 110px;
+  [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper {
     --gap: var(--gap-between-cards-mobile, 10px);
+    height: 390px;
   }
 
   [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-section {
@@ -420,16 +420,12 @@
     width: 100vw;
   }
 
-  [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-swiper {
-    height: 390px;
-  }
-
   [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-card {
-    height: 290px;
+    height: 250px;
   }
 
   [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-tier-adjacent .qorix-review-video-stack-card {
-    height: 350px;
+    height: 300px;
   }
 
   [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-tier-center .qorix-review-video-stack-card {

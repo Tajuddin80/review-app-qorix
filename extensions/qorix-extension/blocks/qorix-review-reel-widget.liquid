@@ -87,17 +87,17 @@
 <script>
   (function () {
     function initReviewReel() {
-      var container = document.querySelector('.mySwiper');
+      let container = document.querySelector('.mySwiper');
       if (!container) return;
 
-      var wrapper = container.closest('.qorix-review-reel-real-review-section');
-      var computedStyle = getComputedStyle(wrapper || container);
-      var navCols = parseInt(computedStyle.getPropertyValue('--nav-cols').trim()) || 3;
-      var gapBetweenCards = parseInt(computedStyle.getPropertyValue('--gap-between-cards').trim()) || 8;
-      var autoplayEnabled = computedStyle.getPropertyValue('--autoplay-enabled').trim() === 'true';
-      var autoplaySpeed = parseInt(computedStyle.getPropertyValue('--autoplay-speed').trim()) || 4000;
+      let wrapper = container.closest('.qorix-review-reel-real-review-section');
+      let computedStyle = getComputedStyle(wrapper || container);
+      let navCols = parseInt(computedStyle.getPropertyValue('--nav-cols').trim()) || 3;
+      let gapBetweenCards = parseInt(computedStyle.getPropertyValue('--gap-between-cards').trim()) || 8;
+      let autoplayEnabled = computedStyle.getPropertyValue('--autoplay-enabled').trim() === 'true';
+      let autoplaySpeed = parseInt(computedStyle.getPropertyValue('--autoplay-speed').trim()) || 4000;
 
-      var swiperOptions = {
+      let swiperOptions = {
         slidesPerView: 1,
         spaceBetween: gapBetweenCards,
         observer: true,
@@ -111,8 +111,9 @@
           clickable: true,
         },
         breakpoints: {
-          601: { slidesPerView: 2, spaceBetween: gapBetweenCards },
-          961: { slidesPerView: navCols, spaceBetween: gapBetweenCards },
+          768: { slidesPerView: 2, spaceBetween: gapBetweenCards },
+          1024: { slidesPerView: 3, spaceBetween: gapBetweenCards },
+          1440: { slidesPerView: navCols, spaceBetween: gapBetweenCards },
         },
       };
 
@@ -123,8 +124,8 @@
         };
       }
 
-      var swiper = new Swiper('.mySwiper', swiperOptions);
-      var currentVideo = null;
+      let swiper = new Swiper('.mySwiper', swiperOptions);
+      let currentVideo = null;
 
       swiper.on('slideChange', function () {
         if (currentVideo) {
@@ -139,8 +140,8 @@
       document
         .querySelectorAll('.qorix-review-reel-review-card-image[data-media-type="video"]')
         .forEach(function (wrapper) {
-          var btn = wrapper.querySelector('.qorix-review-reel-play-btn');
-          var videoSrc = wrapper.dataset.videoSrc;
+          let btn = wrapper.querySelector('.qorix-review-reel-play-btn');
+          let videoSrc = wrapper.dataset.videoSrc;
 
           btn.addEventListener('click', function () {
             if (currentVideo) {
@@ -148,7 +149,7 @@
               currentVideo = null;
             }
 
-            var video = document.createElement('video');
+            let video = document.createElement('video');
             video.src = videoSrc;
             video.controls = true;
             video.autoplay = true;

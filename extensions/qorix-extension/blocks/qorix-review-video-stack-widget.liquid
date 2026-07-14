@@ -1,6 +1,12 @@
 {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 {{ 'qorix-review-video-stack-widget.css' | asset_url | stylesheet_tag }}
 
+<style>
+  [data-section="qorix-review-video-stack-widget"] {
+    --nav-cols: {{ block.settings.nav_cols | default: 5 }};
+  }
+</style>
+
 <section class="qorix-review-video-stack-section" data-section="qorix-review-video-stack-widget">
   {% render 'section-heading' %}
 
@@ -8,8 +14,8 @@
   <div class="qorix-review-video-stack-carousel">
     <!-- Inner clip wrapper hides the outermost half-cards -->
     <div class="qorix-review-video-stack-swiper-clip">
-      <div class="swiper qorix-review-video-stack-swiper">
-        <div class="swiper-wrapper">
+      <div class="qorix-review-video-stack-swiper">
+        <div class="qorix-review-video-stack-swiper-wrapper">
           {% render 'qorix-review-video-stack-widget-card',
             video_src: 'https://www.pexels.com/download/video/7667953/',
             rating: 5,
@@ -129,12 +135,66 @@
       const autoplayOnHover = computedStyle.getPropertyValue('--autoplay-on-hover').trim() === 'true';
       const loopVideoSetting = computedStyle.getPropertyValue('--loop-video').trim() === 'true';
 
-      const stackSlides = Array.from(section.querySelectorAll('.qorix-review-video-stack-swiper .swiper-slide'));
+      const stackSlides = Array.from(section.querySelectorAll('.qorix-review-video-stack-swiper-slide'));
       const paginationContainer = section.querySelector('.qorix-review-video-stack-custom-pagination');
       const stackPrev = section.querySelector('.qorix-review-video-stack-nav-prev');
       const stackNext = section.querySelector('.qorix-review-video-stack-nav-next');
+      const swiperEl = section.querySelector('.qorix-review-video-stack-swiper');
 
-      const halfCols = Math.floor(navCols / 2);
+      /* ── Responsive column count ── */
+      function getEffectiveCols() {
+        if (window.innerWidth <= 1024) return 3;
+        return navCols;
+      }
+
+      let halfCols = Math.floor(getEffectiveCols() / 2);
+
+      /* ── Compute card widths from container pixel width ── */
+      function computeCardWidths() {
+        const cols = getEffectiveCols();
+        halfCols = Math.floor(cols / 2);
+
+        const containerWidth = swiperEl.offsetWidth;
+        const gapVal = parseFloat(getComputedStyle(swiperEl).getPropertyValue('--gap')) || 20;
+        const half = Math.floor(cols / 2);
+        const isMobileFocus = window.innerWidth <= 610;
+
+        // On ≤610px: center is bigger (1.6x), adjacent smaller (0.7x)
+        // On larger: center 1.22x, adjacent 1x, outer 0.64x
+        const weights = [];
+        for (let i = 0; i < cols; i++) {
+          const dist = Math.abs(i - half);
+          if (isMobileFocus) {
+            if (dist === 0) weights.push(1.6);
+            else weights.push(0.7);
+          } else {
+            if (dist === 0) weights.push(1.22);
+            else if (dist === 1) weights.push(1);
+            else weights.push(0.64);
+          }
+        }
+        const totalWeight = weights.reduce((a, b) => a + b, 0);
+        const totalGaps = (cols - 1) * gapVal;
+        const unitWidth = (containerWidth - totalGaps) / totalWeight;
+
+        const centerWeight = isMobileFocus ? 1.6 : 1.22;
+        const adjacentWeight = isMobileFocus ? 0.7 : 1;
+        const outerWeight = isMobileFocus ? 0.7 : 0.64;
+
+        const centerW = Math.round(unitWidth * centerWeight);
+        const adjacentW = Math.round(unitWidth * adjacentWeight);
+        const outerW = Math.round(unitWidth * outerWeight);
+
+        swiperEl.style.setProperty('--card-w-center', centerW + 'px');
+        swiperEl.style.setProperty('--card-w-adjacent', adjacentW + 'px');
+        swiperEl.style.setProperty('--card-w-outer', outerW + 'px');
+      }
+
+      computeCardWidths();
+      window.addEventListener('resize', () => {
+        computeCardWidths();
+        renderStack();
+      });
 
       let activeVideoIndex = Math.min(halfCols, stackSlides.length - 1);
       let stackDots = [];
@@ -237,13 +297,13 @@
           if (Math.abs(offset) <= 2) {
             slide.classList.add('qorix-review-video-stack-position-' + offset);
           } else {
-            var style = getComputedStyle(section);
-            var dAdjacent = parseFloat(style.getPropertyValue('--d-adjacent'));
-            var dOuter = parseFloat(style.getPropertyValue('--d-outer'));
-            var cardWOuter = parseFloat(style.getPropertyValue('--card-w-outer'));
-            var gap = parseFloat(style.getPropertyValue('--gap'));
-            var distance = dOuter + (Math.abs(offset) - 2) * (cardWOuter + gap);
-            var sign = offset > 0 ? '' : '-';
+            const style = getComputedStyle(swiperEl);
+            const dAdjacent = parseFloat(style.getPropertyValue('--d-adjacent'));
+            const dOuter = parseFloat(style.getPropertyValue('--d-outer'));
+            const cardWOuter = parseFloat(style.getPropertyValue('--card-w-outer'));
+            const gap = parseFloat(style.getPropertyValue('--gap'));
+            const distance = dOuter + (Math.abs(offset) - 2) * (cardWOuter + gap);
+            const sign = offset > 0 ? '' : '-';
             slide.style.transform = 'translate(calc(' + sign + distance + 'px - var(--card-w-center) / 2), -50%)';
             slide.style.zIndex = 1;
           }
@@ -563,7 +623,8 @@
   "target": "section",
   "settings": [
     { "type": "product", "id": "product", "label": "product", "autofill": true },
-    { "type": "color", "id": "colour", "label": "Star Colour", "default": "#ff0000" }
+    { "type": "color", "id": "colour", "label": "Star Colour", "default": "#ff0000" },
+    { "type": "range", "id": "nav_cols", "label": "Number of columns", "min": 3, "max": 7, "step": 1, "default": 5 }
   ]
 }
 {% endschema %}
