@@ -3,13 +3,13 @@
   --nav-cols: 5;
   --gap-between-cards: 20px;
   --gap-between-cards-mobile: 10px;
-  --active-dot-color: #088728;
+  --active-dot-color: #000000;
   --autoplay-enabled: false;
   --autoplay-speed: 3000;
   --autoplay-on-hover: true;
   --loop-video: true;
-  --star-color: #FF9500;
-  --overlay-tint: rgba(0, 0, 0, 0);
+  --star-color: #ff0000;
+  --overlay-tint: rgba(255, 33, 33, 0);
 }
 
 [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-section {
@@ -227,7 +227,7 @@
 /* ── Bottom info overlay ── */
 [data-section="qorix-review-video-stack-widget"] .qorix-review-video-stack-info {
   position: absolute;
-  bottom: 18px;
+  bottom: 40px;
   left: 14px;
   right: 14px;
   display: flex;
