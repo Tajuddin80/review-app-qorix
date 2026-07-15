@@ -2,64 +2,34 @@
 {{ 'qorix-review-reel-widget.css' | asset_url | stylesheet_tag }}
 
 <section data-section="qorix-review-reel-widget" class="qorix-review-reel-real-review-section">
-  {% render 'section-heading' %}
   <!-- ── Swiper ── -->
   <div class="qorix-review-reel-swiper-wrapper">
     <div class="qorix-review-reel-swiper swiper mySwiper">
       <div class="swiper-wrapper">
+        {% for i in (1..5) %}
+          {% if i == 1 %}
+            {% render 'qorix-review-reel-widget-card',
+              media_type: 'image',
+              image_src: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80',
+              image_alt: 'Facial Serum Vitamin C product',
+              product_title: 'Product: Facial Serum Vitamin C',
+              review_quote: "I'm grateful for their honesty and transparency throughout the process.",
+              user_avatar: 'https://i.pravatar.cc/56?img=47',
+              user_name: 'Saoirse Ronan',
+              review_date: '12th April, 2026'
+            %}
+          {% endif %}
 
-        {% render 'qorix-review-reel-widget-card',
-          media_type: 'image',
-          image_src: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80',
-          image_alt: 'Facial Serum Vitamin C product',
-          product_title: 'Product: Facial Serum Vitamin C',
-          review_quote: "I'm grateful for their honesty and transparency throughout the process.",
-          user_avatar: 'https://i.pravatar.cc/56?img=47',
-          user_name: 'Saoirse Ronan',
-          review_date: '12th April, 2026'
-        %}
-
-        {% render 'qorix-review-reel-widget-card',
-          media_type: 'video',
-          video_src: 'https://www.pexels.com/download/video/7667953/',
-          product_title: 'Product: Facial Serum Vitamin C',
-          review_quote: 'I was initially hesitant about applying for a mortgage',
-          user_avatar: 'https://i.pravatar.cc/56?img=32',
-          user_name: 'Jennifer Lawrence',
-          review_date: '16th April, 2026'
-        %}
-
-        {% render 'qorix-review-reel-widget-card',
-          media_type: 'image',
-          image_src: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600&q=80',
-          image_alt: 'AHA Smoothing Cream product',
-          product_title: 'Product: AHA Smoothing Cream',
-          review_quote: 'The results exceeded my expectations completely',
-          user_avatar: 'https://i.pravatar.cc/56?img=12',
-          user_name: 'Emma Watson',
-          review_date: '20th May, 2026'
-        %}
-
-        {% render 'qorix-review-reel-widget-card',
-          media_type: 'video',
-          video_src: 'https://www.pexels.com/download/video/7667953/',
-          product_title: 'Product: Hydrating Face Mist',
-          review_quote: 'Best skincare purchase I have made this year',
-          user_avatar: 'https://i.pravatar.cc/56?img=25',
-          user_name: 'Ryan Reynolds',
-          review_date: '25th May, 2026'
-        %}
-
-        {% render 'qorix-review-reel-widget-card',
-          media_type: 'image',
-          image_src: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&q=80',
-          image_alt: 'Skincare product review',
-          product_title: 'Product: Night Repair Serum',
-          review_quote: 'Trust is paramount when it comes to choosing the right skincare',
-          user_avatar: 'https://i.pravatar.cc/56?img=51',
-          user_name: 'Bruce Willis',
-          review_date: '17th May, 2026'
-        %}
+          {% render 'qorix-review-reel-widget-card',
+            media_type: 'video',
+            video_src: 'https://www.pexels.com/download/video/7667953/',
+            product_title: 'Product: Facial Serum Vitamin C',
+            review_quote: 'I was initially hesitant about applying for a mortgage',
+            user_avatar: 'https://i.pravatar.cc/56?img=32',
+            user_name: 'Jennifer Lawrence',
+            review_date: '16th April, 2026'
+          %}
+        {% endfor %}
       </div>
 
       <div class="qorix-review-reel-swiper-pagination"></div>
@@ -84,116 +54,7 @@
 
 <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer></script>
 
-<script>
-  (function () {
-    function initReviewReel() {
-      let container = document.querySelector('.mySwiper');
-      if (!container) return;
-
-      let wrapper = container.closest('.qorix-review-reel-real-review-section');
-      let computedStyle = getComputedStyle(wrapper || container);
-      let navCols = parseInt(computedStyle.getPropertyValue('--nav-cols').trim()) || 3;
-      let gapBetweenCards = parseInt(computedStyle.getPropertyValue('--gap-between-cards').trim()) || 8;
-      let autoplayEnabled = computedStyle.getPropertyValue('--autoplay-enabled').trim() === 'true';
-      let autoplaySpeed = parseInt(computedStyle.getPropertyValue('--autoplay-speed').trim()) || 4000;
-
-      let swiperOptions = {
-        slidesPerView: 1,
-        spaceBetween: gapBetweenCards,
-        observer: true,
-        observeParents: true,
-        navigation: {
-          nextEl: document.querySelector('.qorix-review-reel-swiper-button-next'),
-          prevEl: document.querySelector('.qorix-review-reel-swiper-button-prev'),
-        },
-        pagination: {
-          el: '.qorix-review-reel-swiper-pagination',
-          clickable: true,
-        },
-        breakpoints: {
-          768: { slidesPerView: 2, spaceBetween: gapBetweenCards },
-          1024: { slidesPerView: 3, spaceBetween: gapBetweenCards },
-          1440: { slidesPerView: navCols, spaceBetween: gapBetweenCards },
-        },
-      };
-
-      if (autoplayEnabled) {
-        swiperOptions.autoplay = {
-          delay: autoplaySpeed,
-          disableOnInteraction: false,
-        };
-      }
-
-      let swiper = new Swiper('.mySwiper', swiperOptions);
-      let currentVideo = null;
-
-      swiper.on('slideChange', function () {
-        if (currentVideo) {
-          currentVideo.pause();
-          currentVideo = null;
-        }
-        if (autoplayEnabled && swiper.autoplay) {
-          swiper.autoplay.start();
-        }
-      });
-
-      document
-        .querySelectorAll('.qorix-review-reel-review-card-image[data-media-type="video"]')
-        .forEach(function (wrapper) {
-          let btn = wrapper.querySelector('.qorix-review-reel-play-btn');
-          let videoSrc = wrapper.dataset.videoSrc;
-
-          btn.addEventListener('click', function () {
-            if (currentVideo) {
-              currentVideo.pause();
-              currentVideo = null;
-            }
-
-            let video = document.createElement('video');
-            video.src = videoSrc;
-            video.controls = true;
-            video.autoplay = true;
-            video.style.cssText =
-              'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;border-radius:8px;';
-            wrapper.appendChild(video);
-            btn.style.display = 'none';
-
-            video.addEventListener('play', function () {
-              currentVideo = video;
-              if (swiper.autoplay) {
-                swiper.autoplay.stop();
-              }
-            });
-
-            video.addEventListener('pause', function () {
-              if (currentVideo === video) {
-                currentVideo = null;
-              }
-              if (autoplayEnabled && swiper.autoplay) {
-                swiper.autoplay.start();
-              }
-            });
-
-            video.addEventListener('ended', function () {
-              if (currentVideo === video) {
-                currentVideo = null;
-              }
-              muteBtn.remove();
-              if (autoplayEnabled && swiper.autoplay) {
-                swiper.autoplay.start();
-              }
-            });
-          });
-        });
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initReviewReel);
-    } else {
-      initReviewReel();
-    }
-  })();
-</script>
+<script src="{{ 'qorix-review-reel-widget.js' | asset_url }}" defer></script>
 
 {% schema %}
 {

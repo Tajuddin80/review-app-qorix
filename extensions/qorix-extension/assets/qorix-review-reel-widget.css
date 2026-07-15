@@ -19,7 +19,7 @@
   align-items: center;
   gap: 50px;
   padding: 80px 40px;
-  max-width: 1405px;
+  /* max-width: 1920px; */
   margin: 0 auto;
   text-align: center;
 }
@@ -27,7 +27,7 @@
 
 [data-section="qorix-review-reel-widget"] .qorix-review-reel-swiper-wrapper {
   width: 100%;
-  max-width: 90vw;
+  /* max-width: 90vw; */
   margin: 50px auto;
   position: relative;
   overflow: visible !important;
@@ -151,22 +151,22 @@
   transform: translate(-50%, -50%);
   width: 40px;
   height: 40px;
+  padding: 10px;
   border: none;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
   transition:
-    transform 0.15s,
-    background 0.15s;
+    transform 0.15s;
+  color: white;
 }
 
 [data-section="qorix-review-reel-widget"] .qorix-review-reel-play-btn:hover {
-  background: #fff;
-  transform: translate(-50%, -50%) scale(1.08);
+  transform: translate(-50%, -50%) scale(1.05);
+  color: #ffffff;
 }
 
 [data-section="qorix-review-reel-widget"] .qorix-review-reel-review-card-image[data-media-type="image"] .qorix-review-reel-play-btn {
@@ -242,6 +242,15 @@
   color: var(--color-text-secondary);
 }
 
+@media (min-width: 1400px) {
+  [data-section="qorix-review-reel-widget"] .qorix-review-reel-real-review-section {
+    padding: 60px 24px;
+    gap: 40px;
+  }
+
+
+}
+
 @media (max-width: 960px) {
   [data-section="qorix-review-reel-widget"] .qorix-review-reel-real-review-section {
     padding: 60px 24px;
@@ -250,6 +259,7 @@
 
 
 }
+
 
 
 @media (max-width: 600px) {
