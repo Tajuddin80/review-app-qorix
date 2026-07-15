@@ -6,7 +6,7 @@
   <div class="qorix-review-reel-swiper-wrapper">
     <div class="qorix-review-reel-swiper swiper mySwiper">
       <div class="swiper-wrapper">
-        {% comment %} {% for i in (1..5) %}
+        {% for i in (1..5) %}
           {% if i == 1 %}
             {% render 'qorix-review-reel-widget-card',
               media_type: 'image',
@@ -31,63 +31,7 @@
             verified: true,
             review_date: '16th April, 2026'
           %}
-        {% endfor %} {% endcomment %}
-
-        {% render 'qorix-review-reel-widget-card',
-        media_type: 'image',
-        image_src: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80',
-        image_alt: 'Facial Serum Vitamin C product',
-        product_title: 'Product: Facial Serum Vitamin C',
-
-        review_quote: "I'm grateful for their honesty and transparency throughout the process.",
-        user_avatar: 'https://i.pravatar.cc/56?img=47',
-        user_name: 'Saoirse Ronan',
-
-        verified: true,
-        review_date: '12th April, 2026'
-      %}
-      {% render 'qorix-review-reel-widget-card',
-        media_type: 'video',
-        video_src: 'https://www.pexels.com/download/video/7667953/',
-        product_title: 'Product: Facial Serum Vitamin C',
-        review_quote: 'I was initially hesitant about applying for a ',
-        user_avatar: 'https://i.pravatar.cc/56?img=32',
-        user_name: 'Jennifer Lawrence',
-        verified: true,
-        review_date: '16th April, 2026'
-
-      %}
-      {% render 'qorix-review-reel-widget-card',
-        media_type: 'video',
-        video_src: 'https://www.pexels.com/download/video/37112363/',
-        product_title: 'Product: Facial Serum Vitamin C',
-        review_quote: 'I was initially  about applying for a mortgage',
-        user_avatar: 'https://i.pravatar.cc/56?img=32',
-        user_name: 'Jennifer Lawrence',
-        verified: true,
-        review_date: '16th April, 2026'
-      %}
-      {% render 'qorix-review-reel-widget-card',
-        media_type: 'video',
-        video_src: 'https://www.pexels.com/download/video/38455725/',
-        product_title: 'Product:  Serum Vitamin C',
-        review_quote: 'I was initially hesitant about for a mortgage',
-        user_avatar: 'https://i.pravatar.cc/56?img=32',
-        user_name: 'Jennifer Lawrence',
-        verified: true,
-        review_date: '16th April, 2026'
-      %}
-      {% render 'qorix-review-reel-widget-card',
-        media_type: 'video',
-        video_src: 'https://www.pexels.com/download/video/37644431/',
-        product_title: 'Product: Facial Serum  C',
-        review_quote: 'I was initially hesitant applying for a mortgage',
-        user_avatar: 'https://i.pravatar.cc/56?img=32',
-        user_name: 'Jennifer Lawrence',
-        verified: true,
-        review_date: '16th April, 2026'
-      %}
-
+        {% endfor %}
       </div>
 
       <div class="qorix-review-reel-swiper-pagination"></div>
