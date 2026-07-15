@@ -47,66 +47,67 @@
     let swiper = new Swiper(".mySwiper", swiperOptions);
     let currentVideo = null;
 
-    swiper.on("slideChange", function () {
+    let PAUSE_ICON =
+      '<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="rgba(0,0,0,0.5)"/><rect x="13" y="11" width="5" height="18" rx="1.5" fill="white"/><rect x="22" y="11" width="5" height="18" rx="1.5" fill="white"/></svg>';
+
+    let PLAY_ICON =
+      '<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="rgba(0,0,0,0.5)"/><path d="M16 12v16l13-8z" fill="white"/></svg>';
+
+    function pauseAllVideos() {
       if (currentVideo) {
         currentVideo.pause();
         currentVideo = null;
       }
-      if (autoplayEnabled && swiper.autoplay) {
-        swiper.autoplay.start();
-      }
-    });
+    }
 
     document
       .querySelectorAll(
         '.qorix-review-reel-review-card-image[data-media-type="video"]',
       )
       .forEach(function (wrapper) {
+        let video = wrapper.querySelector("video");
         let btn = wrapper.querySelector(".qorix-review-reel-play-btn");
-        let videoSrc = wrapper.dataset.videoSrc;
 
-        btn.addEventListener("click", function () {
-          if (currentVideo) {
-            currentVideo.pause();
+        if (!video || !btn) return;
+
+        function onPlay() {
+          currentVideo = video;
+          btn.innerHTML = PAUSE_ICON;
+          if (swiper.autoplay) {
+            swiper.autoplay.stop();
+          }
+        }
+
+        function onPause() {
+          if (currentVideo === video) {
             currentVideo = null;
           }
+          btn.innerHTML = PLAY_ICON;
+          if (autoplayEnabled && swiper.autoplay) {
+            swiper.autoplay.start();
+          }
+        }
 
-          let video = document.createElement("video");
-          video.src = videoSrc;
-          video.controls = true;
-          video.autoplay = true;
-          video.style.cssText =
-            "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;border-radius:8px;";
-          wrapper.appendChild(video);
-          btn.style.display = "none";
-
-          video.addEventListener("play", function () {
-            currentVideo = video;
-            if (swiper.autoplay) {
-              swiper.autoplay.stop();
-            }
-          });
-
-          video.addEventListener("pause", function () {
-            if (currentVideo === video) {
-              currentVideo = null;
-            }
-            if (autoplayEnabled && swiper.autoplay) {
-              swiper.autoplay.start();
-            }
-          });
-
-          video.addEventListener("ended", function () {
-            if (currentVideo === video) {
-              currentVideo = null;
-            }
-            muteBtn.remove();
-            if (autoplayEnabled && swiper.autoplay) {
-              swiper.autoplay.start();
-            }
-          });
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          if (video.paused) {
+            pauseAllVideos();
+            video.play().catch(function () {
+              btn.innerHTML = PLAY_ICON;
+            });
+          } else {
+            video.pause();
+          }
         });
+
+        video.addEventListener("play", onPlay);
+        video.addEventListener("pause", onPause);
+        video.addEventListener("ended", onPause);
       });
+
+    swiper.on("slideChange", function () {
+      pauseAllVideos();
+    });
   }
 
   if (document.readyState === "loading") {
